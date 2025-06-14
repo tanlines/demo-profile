@@ -3,14 +3,14 @@ import { useEffect, useState, useRef } from 'react';
 
 const sections = [
   {
-    title: "Frontend Development",
+    title: "Website details",
     image: "",
     gradient: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
     text: [
-      "Crafting beautiful and responsive user interfaces",
-      "Building with modern frameworks like React",
-      "Creating seamless user experiences",
-      "Implementing pixel-perfect designs"
+      "Developed using Cursor IDE with AI-assisted coding",
+      "Static frontend written in React.js and built with Vite",
+      "MUI for UI components and Motion for animations",
+      "Hosted on Cloudflare Pages for global performance and CI/CD",
     ]
   },
   {
@@ -48,7 +48,7 @@ function ScrollSections() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sectionHeight = window.innerHeight;
-      const totalSectionHeight = sectionHeight * 2; // 200vh
+      const totalSectionHeight = sectionHeight; // 100vh
       
       // Find which section is currently in view
       const currentSection = Math.floor(scrollPosition / totalSectionHeight);
@@ -114,7 +114,7 @@ function ScrollSections() {
           key={section.title}
           ref={el => sectionRefs.current[index] = el}
           sx={{
-            height: index === sections.length - 1 ? '300vh' : '200vh', // Extra height for last section
+            height: index === sections.length - 1 ? '150vh' : '100vh', // Half height for all sections
             position: 'relative',
             overflow: 'hidden'
           }}

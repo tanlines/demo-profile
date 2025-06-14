@@ -2,7 +2,7 @@ export const experiences = [
   {
     title: "Software developer - Full stack",
     company: "Cotiviti Australia",
-    period: "2021 - Present",
+    period: "2021 - 2025",
     description: [
       "Full stack software engineer developing tools to detect fraud waste and abuse in the healthcare sector",
       "Developed web applications using Agile methodologies including sprint planning, daily stand-ups, and retrospectives.",

@@ -1,4 +1,5 @@
-import { Box, Typography, Avatar, useTheme } from '@mui/material';
+import { Box, Typography, Avatar, useTheme, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function ProfileSection() {
   const theme = useTheme();
@@ -18,7 +19,7 @@ function ProfileSection() {
       }}
     >
       <Avatar
-        src="/profile.jpg"
+        src="https://i.imgur.com/Waw8gNZ.jpeg"
         alt="Profile"
         sx={{
           width: 200,
@@ -56,11 +57,33 @@ function ProfileSection() {
           textAlign: 'center',
           fontStyle: 'italic',
           maxWidth: '600px',
-          mx: 'auto'
+          mx: 'auto',
+          mb: 4
         }}
       >
-        Created using Cursor AI
+        Site created using Cursor AI
       </Typography>
+      <Button
+        component={Link}
+        to="/resume"
+        variant="contained"
+        size="large"
+        sx={{
+          px: 4,
+          py: 1.5,
+          fontSize: '1.1rem',
+          textTransform: 'none',
+          borderRadius: 2,
+          boxShadow: theme.shadows[4],
+          '&:hover': {
+            boxShadow: theme.shadows[8],
+            transform: 'translateY(-2px)',
+            transition: 'all 0.2s ease-in-out'
+          }
+        }}
+      >
+        View Resume
+      </Button>
     </Box>
   );
 }
