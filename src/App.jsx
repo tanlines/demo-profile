@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Resume from './pages/Resume';
 import Navbar from './components/Navbar';
 import { ThemeProvider } from './context/ThemeContext';
-
 function App() {
   return (
     <ThemeProvider>

@@ -1,8 +1,11 @@
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import useScrollToTop from '../hooks/useScrollToTop';
 
 function Navbar() {
+  useScrollToTop();
+
   return (
     <AppBar position="sticky" color="default" elevation={1}>
       <Toolbar>

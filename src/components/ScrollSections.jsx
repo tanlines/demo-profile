@@ -13,28 +13,28 @@ const sections = [
       "Hosted on Cloudflare Pages for global performance and CI/CD",
     ]
   },
-  {
-    title: "Backend Development",
-    image: "",
-    gradient: "linear-gradient(45deg, #FF9800 30%, #FFC107 90%)",
-    text: [
-      "Designing robust server architectures",
-      "Building scalable APIs and services",
-      "Implementing secure authentication",
-      "Optimizing database performance"
-    ]
-  },
-  {
-    title: "Problem Solving",
-    image: "",
-    gradient: "linear-gradient(45deg, #4CAF50 30%, #8BC34A 90%)",
-    text: [
-      "Breaking down complex challenges",
-      "Finding elegant solutions",
-      "Writing clean, maintainable code",
-      "Collaborating with teams effectively"
-    ]
-  }
+//   {
+//     title: "Backend Development",
+//     image: "",
+//     gradient: "linear-gradient(45deg, #FF9800 30%, #FFC107 90%)",
+//     text: [
+//       "Designing robust server architectures",
+//       "Building scalable APIs and services",
+//       "Implementing secure authentication",
+//       "Optimizing database performance"
+//     ]
+//   },
+//   {
+//     title: "Problem Solving",
+//     image: "",
+//     gradient: "linear-gradient(45deg, #4CAF50 30%, #8BC34A 90%)",
+//     text: [
+//       "Breaking down complex challenges",
+//       "Finding elegant solutions",
+//       "Writing clean, maintainable code",
+//       "Collaborating with teams effectively"
+//     ]
+//   }
 ];
 
 function ScrollSections() {
