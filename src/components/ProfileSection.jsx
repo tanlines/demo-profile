@@ -24,13 +24,13 @@ function ProfileSection() {
         sx={{
           width: 200,
           height: 200,
-          mb: 4,
+          mb: 1,
           border: `4px solid ${theme.palette.primary.main}`,
           boxShadow: theme.shadows[4]
         }}
       />
       <Typography
-        variant="h1"
+        variant="h2"
         sx={{
           mb: 2,
           color: theme.palette.text.primary,
@@ -43,7 +43,7 @@ function ProfileSection() {
       <Typography
         variant="h4"
         sx={{
-          mb: 3,
+          mb: 2,
           color: theme.palette.text.secondary,
           textAlign: 'center'
         }}
@@ -58,7 +58,7 @@ function ProfileSection() {
           fontStyle: 'italic',
           maxWidth: '600px',
           mx: 'auto',
-          mb: 4
+          mb: 2
         }}
       >
         Site created using Cursor AI
