@@ -12,6 +12,30 @@ export const experiences = [
     technologies: [
       'React', 'Javascript', 'Laravel', 'PHP','PostgresSQL',
       'Jest', 'Docker', 'AWS'
+    ],
+    details: [
+      {
+        title: "Frontend stack",
+        items: [
+          "Framework: React",
+          "Build tool: Webpack",
+          "Routing: React router",
+          "Components: Material UI",
+          "State management: React context/redux",
+          "API communication: Axios",
+          "Authentication: Laravel session",
+          "Testing: Jest"
+        ]
+      },
+      {
+        title: "Backend stack",
+        items: [
+          "Framework: Laravel PHP",
+          "Authentication: Kerberos with Windows AD",
+          "RDS Engine: Amazon RDS (PostgresSQL)",
+          "Migrations and schema: Flyway"
+        ]
+      }
     ]
   },
   {
