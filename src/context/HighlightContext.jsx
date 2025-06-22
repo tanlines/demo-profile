@@ -4,9 +4,15 @@ const HighlightContext = createContext();
 
 export function HighlightProvider({ children }) {
   const [highlightedSkill, setHighlightedSkill] = useState(null);
+  const [highlightedPrinciple, setHighlightedPrinciple] = useState(null);
 
   return (
-    <HighlightContext.Provider value={{ highlightedSkill, setHighlightedSkill }}>
+    <HighlightContext.Provider value={{ 
+      highlightedSkill, 
+      setHighlightedSkill,
+      highlightedPrinciple,
+      setHighlightedPrinciple
+    }}>
       {children}
     </HighlightContext.Provider>
   );

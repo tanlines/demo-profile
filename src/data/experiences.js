@@ -50,7 +50,7 @@ export const experiences = [
         "Provided customer support to patrons, addressing inquiries and incorporating feedback to enhance software offerings"
     ],
     technologies: [
-      'Java', 'JavaScript'
+      'Java', 'Autohotkey'
     ]
   },
   {

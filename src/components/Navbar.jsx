@@ -44,6 +44,14 @@ function Navbar() {
           >
             Resume
           </Button>
+          <Button
+            component={RouterLink}
+            to="/star"
+            color="inherit"
+            sx={{ mx: 1 }}
+          >
+            STAR
+          </Button>
           <ThemeToggle />
         </Box>
       </Toolbar>

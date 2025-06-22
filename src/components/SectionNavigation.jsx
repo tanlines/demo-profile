@@ -1,14 +1,24 @@
 import { Box, Button, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { useLocation } from 'react-router-dom';
 
-const sections = [
+const resumeSections = [
   { id: 'skills', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' }
 ];
 
+const starSections = [
+  { id: 'leadership-principles', label: 'Leadership Principles' },
+  { id: 'situations', label: 'Situations' }
+];
+
 function SectionNavigation() {
   const theme = useTheme();
+  const location = useLocation();
+
+  // Determine which sections to show based on current page
+  const sections = location.pathname === '/star' ? starSections : resumeSections;
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
