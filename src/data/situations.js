@@ -10,7 +10,7 @@ export const situations = [
   {
     title: "Generate report for large government client",
     principles: ["Bias for Action", "Earn Trust", "Dive Deep", "Ownership", "Deliver Results"],
-    situation: "Director of DVA (Department of Veterans Affairs) required a critical financial report as part of their annual review process with only a couple weeks notice. This report was essential for maintaining our contract with one of our largest government clients.",
+    situation: "Client director required a critical financial report as part of their annual review process with only a couple weeks notice. This report was essential for maintaining our contract with one of our largest government clients.",
     task: "Modify the logic inside our web application to generate the required financial figures.",
     action: "Worked over the weekend to analyze the requirements, modify the calcuation logic and build the necessary API endpoints. Coordinated with the product manager to validate the generated figures.",
     result: "Report was generated and delivered on time, meeting all DVA requirements and compliance standards. The report aided in maintaining our contract with one of our largest customers."
