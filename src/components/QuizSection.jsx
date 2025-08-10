@@ -110,7 +110,7 @@ const QuizSection = () => {
                 You are the one 💕
               </Typography>
             )}
-            {yesCount > 0 && yesCount < 6 && (
+            {yesCount > 0 && yesCount < 5 && (
               <Typography variant="h5" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
                 {yesCount === 1 ? "Better than nothing" :
                  yesCount === 2 ? "We can make it work" :
