@@ -175,7 +175,7 @@ export const profileChips = {
       {
         emoji: "⛪",
         text: "Agnostic",
-        description: "I think it's a bit rude when people think their religion is the only true one and force it on others. I'm otherwise skeptical and would rather try to see how one's beliefs benefit individuals and communities."
+        description: "I think it's a bit bold for religions to claim they're the only correct religion. I'm otherwise skeptical and would rather try to see how one's beliefs benefit individuals and communities."
       }
     ]
   }
