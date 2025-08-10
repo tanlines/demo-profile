@@ -13,8 +13,7 @@ const QuizSection = () => {
     { title: "Cat", emoji: "🐱" },
     { title: "Sushi", emoji: "🍣" },
     { title: "Tea", emoji: "🍵" },
-    { title: "Sunset", emoji: "🌅" },
-    { title: "Android", emoji: "🤖" }
+    { title: "Sunset", emoji: "🌅" }
   ];
   
   // Create separate motion values for each question
@@ -106,7 +105,7 @@ const QuizSection = () => {
                 We were never meant to be 💔
               </Typography>
             )}
-            {yesCount === 6 && (
+            {yesCount === 5 && (
               <Typography variant="h4" sx={{ color: 'success.main', fontStyle: 'italic', fontWeight: 'bold' }}>
                 You are the one 💕
               </Typography>
@@ -114,9 +113,8 @@ const QuizSection = () => {
             {yesCount > 0 && yesCount < 6 && (
               <Typography variant="h5" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
                 {yesCount === 1 ? "Better than nothing" :
-                 yesCount === 2 ? "There's a chance" :
-                 yesCount === 3 ? "We can make it work" :
-                 yesCount === 4 ? "Let's be friends" :
+                 yesCount === 2 ? "We can make it work" :
+                 yesCount === 3 ? "Let's be friends" :
                  "No one's perfect"} ✨
               </Typography>
             )}
