@@ -15,8 +15,12 @@ const Home = () => {
 
   // Send a message once when the page is loaded
   useEffect(() => {
-    // Only send if we haven't sent already and we're not in development mode
-    if (messageSentRef.current || import.meta.env.DEV) return;
+    // Check if URL has "me" parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasMeParam = urlParams.has('me');
+    
+    // Only send if we haven't sent already, we're not in development mode, and no "me" parameter
+    if (messageSentRef.current || import.meta.env.DEV || hasMeParam) return;
 
     const sendPageLoadMessage = async () => {
       try {
