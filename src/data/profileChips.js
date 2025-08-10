@@ -121,7 +121,7 @@ export const profileChips = {
       {
         emoji: "💰",
         text: "Finances",
-        description: "I save most of my money and am investing in ETFs. I track my expenses monthly and try to make sensible purchases for long term. I did grow up being quite frugal which I'm trying to break out of as there are so many enriching ways to spend money that aren't immediately obvious."
+        description: "I save most of my money and am investing in ETFs. I track my expenses monthly and try to make sensible purchases for long term. I did grow up being quite frugal which I'm trying to break out of as there are so many enriching ways to spend money that aren't immediately obvious. Money comes and goes but time does not."
       },
       {
         emoji: "🐱",
@@ -148,7 +148,7 @@ export const profileChips = {
       {
         emoji: "📸",
         text: "Photography",
-        description: "I practice the basics of checking light, composition and framing so I can take better photos, just enough to be able to take not completely shit photos of my friends, family and nature"
+        description: "I practice the basics of checking light, composition and framing so I can take better photos, just enough to be able to take not completely shit photos of my friends, family and nature. I'll be patient if you need me to get the perfect shot of you"
       },
       {
         emoji: "🏂",
@@ -175,7 +175,7 @@ export const profileChips = {
       {
         emoji: "⛪",
         text: "Agnostic",
-        description: "I think it's a bit rude when people think their religion is the only true one and force it on others."
+        description: "I think it's a bit rude when people think their religion is the only true one and force it on others. I'm otherwise skeptical and would rather try to see how one's beliefs benefit individuals and communities."
       }
     ]
   }

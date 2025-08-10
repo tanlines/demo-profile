@@ -1,9 +1,10 @@
-import { Box, Typography, Avatar, useTheme, Button, Chip, Stack, Paper } from '@mui/material';
+import { Box, Typography, useTheme, Button, Chip, Stack, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';  
 import { profileChips } from '../data/profileChips';
 import { useState } from 'react';
 import QuizSection from './QuizSection';
 import QuoteBox from './QuoteBox';
+import ProfilePicture from './ProfilePicture';
 
 function ProfileSection() {
   const theme = useTheme();
@@ -177,19 +178,9 @@ function ProfileSection() {
         width: '100%'
       }}
     >
-      <Avatar
-        src="https://i.imgur.com/Waw8gNZ.jpeg"
-        alt="Profile"
-        sx={{
-          width: 200,
-          height: 200,
-          mb: 3,
-          border: `4px solid ${theme.palette.primary.main}`,
-          boxShadow: theme.shadows[4]
-        }}
-      />
+      <ProfilePicture />
       <Typography
-        variant="h2"
+        variant="h3"
         sx={{
           mb: 3,
           color: theme.palette.text.primary,
