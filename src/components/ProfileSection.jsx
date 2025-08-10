@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { profileChips } from '../data/profileChips';
 import { useState } from 'react';
 import QuizSection from './QuizSection';
+import QuoteBox from './QuoteBox';
 
 function ProfileSection() {
   const theme = useTheme();
   const [selectedChip, setSelectedChip] = useState(null);
+  const [loadedImages, setLoadedImages] = useState(new Set());
 
   // Create audio element for bubblewrap popping sound
   const bubblePopSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT');
@@ -41,6 +43,11 @@ function ProfileSection() {
   const handleChipClick = (chip) => {
     // Play bubblewrap popping sound
     playPopSound();
+    
+    // If this chip has an image, mark it for loading
+    if (chip.image && !loadedImages.has(chip.image)) {
+      setLoadedImages(prev => new Set(prev).add(chip.image));
+    }
     
     setSelectedChip(selectedChip?.text === chip.text ? null : chip);
   };
@@ -97,9 +104,26 @@ function ProfileSection() {
           <Typography variant="h6" sx={{ mb: 1, color: theme.palette.primary.main }}>
             {selectedChip.emoji} {selectedChip.text}
           </Typography>
-          <Typography variant="body1" sx={{ color: theme.palette.text.secondary }}>
+          <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: selectedChip.image ? 2 : 0 }}>
             {selectedChip.description}
           </Typography>
+          
+          {/* Optional image display */}
+          {selectedChip.image && loadedImages.has(selectedChip.image) && (
+            <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+              <img
+                src={selectedChip.image}
+                alt={`${selectedChip.text} illustration`}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '300px',
+                  borderRadius: '8px',
+                  boxShadow: theme.shadows[2],
+                  objectFit: 'cover'
+                }}
+              />
+            </Box>
+          )}
         </Paper>
       )}
     </Box>
@@ -165,9 +189,8 @@ function ProfileSection() {
           renderCategory(categoryKey, categoryData)
         )}
       </Box>
-      <Box sx={{ height: '50vh' }}>
       <QuizSection/>
-      </Box>
+      <QuoteBox/>
     </Box>
   );
 }

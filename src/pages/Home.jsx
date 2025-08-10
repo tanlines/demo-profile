@@ -15,8 +15,8 @@ const Home = () => {
 
   // Send a message once when the page is loaded
   useEffect(() => {
-    // Only send if we haven't sent already
-    if (messageSentRef.current) return;
+    // Only send if we haven't sent already and we're not in development mode
+    if (messageSentRef.current || import.meta.env.DEV) return;
 
     const sendPageLoadMessage = async () => {
       try {

@@ -10,22 +10,26 @@ export const profileChips = {
         {
           emoji: "💃",
           text: "Dancing",
-          description: "Picked up dancing in 2022 and have been dancing ever since. Combines exercise, socialising and creativity in one. Tried a few different styles but I'm most comfortable with hip hop and recently contemporary"
+          description: "Picked up dancing in 2022 and have been dancing ever since. Combines exercise, socialising and creativity in one. Tried a few different styles but I'm most comfortable with hip hop and recently contemporary",
+          image: "/chips/dance.jpg"
         },
         {
           emoji: "🏠",
           text: "Homebody",
-          description: "Where you'll find me most of the time sleeping, coding, rolling on my exercise mats, watching a movie or playing a game"
+          description: "Where you'll find me most of the time sleeping, coding, rolling on my exercise mats, watching a movie or playing a game",
+        image: "/chips/homebody.jpg"
         },
       {
         emoji: "🇯🇵",
         text: "Japan",
-        description: "I've been to Japan 6 times, learned enough for basic conversation in highschool and occasionally watch anime"
+        description: "I've been to Japan 6 times, learned enough for basic conversation in highschool and occasionally watch anime",
+        image: "/chips/japan.jpg"
       },
       {
         emoji: "🌿",
         text: "Nature",
-        description: "I like going for walks and watching sunsets for the fresh air and a bit of exercise"
+        description: "I like going for walks and watching sunsets for the fresh air and a bit of exercise",
+        image: "/chips/nature.jpg"
       },
       {
         emoji: "🤖",
@@ -40,8 +44,9 @@ export const profileChips = {
       {
         emoji: "🧗",
         text: "Bouldering",
-        description: "I don't go too often, around a V2-3 level, usually go to 1up bouldering but have been to Blochaus and 9degrees as well"
-      }
+        description: "I don't go too often, around a V2-3 level, usually go to 1up bouldering but have been to Blochaus and 9degrees as well",
+        image: "/chips/bouldering.jpg"
+      },
     ]
   },
   lookingFor: {
@@ -95,7 +100,8 @@ export const profileChips = {
       {
         emoji: "🍕",
         text: "Food",
-        description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it"
+        description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it",
+        image: "/chips/food.jpg"
       },
       {
         emoji: "🎬",
@@ -120,7 +126,8 @@ export const profileChips = {
       {
         emoji: "🐱",
         text: "Cat-lover",
-        description: "Don't own a cat but I'm a big fan of them. I've been to a few cat cafes and always enjoy seeing street cats"
+        description: "I love cats and have a soft spot for them. They're independent, curious, and make great companions",
+        image: "/chips/cat.jpg"
       },
       {
         emoji: "✈️",
@@ -130,7 +137,8 @@ export const profileChips = {
       {
         emoji: "👨‍🍳",
         text: "Cooking",
-        description: "I consider cooking a necessary lifeskill but it's not exactly a hobby of mine. I can cook a few basic dishes and I was part of the baking society in UNSW so you know I can follow a recipe"
+        description: "I consider cooking a necessary lifeskill but it's not exactly a hobby of mine. I can cook a few basic dishes and I was part of the baking society in UNSW so you know I can follow a recipe",
+        image: "/chips/cooking.jpg"
       },
       {
         emoji: "📸",
@@ -140,12 +148,14 @@ export const profileChips = {
       {
         emoji: "🏂",
         text: "Snowboarding",
-        description: "Have snowboarded a few times in Japan and New Zealand to comfortably ride a blue run. Bought some thicc padded pants which have saved my ass many times, I could wear it for you if you want"
+        description: "Have snowboarded a few times in Japan and New Zealand to comfortably ride a blue run. Bought some thicc padded pants which have saved my ass many times",
+        image: "/chips/snowboarding.jpg"
       },
       {
         emoji: "🏸",
         text: "Badminton",
-        description: "Played for 5 years in high school, I still remember my training but the knees are not what they used to be"
+        description: "Played for 5 years in high school, I still remember my training but the knees are not what they used to be",
+        image: "/chips/badminton.jpg"
       },
       {
         emoji: "🎓",
