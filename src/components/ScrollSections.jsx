@@ -105,7 +105,7 @@ function ScrollSections() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sectionHeight = window.innerHeight;
-      const totalSectionHeight = sectionHeight; // 100vh
+      const totalSectionHeight = sectionHeight * 1.5; // 150vh
       
       // Use dynamically measured ProfileSection height
       const adjustedScrollPosition = scrollPosition - profileSectionHeight;
@@ -129,12 +129,12 @@ function ScrollSections() {
         );
         
         // Make text disappear quickly when section is almost finished
-        // For all sections except the final one, fade out at 90%
+        // For all sections except the final one, fade out at 95%
         // For the final section, keep text visible until the end
         const isFinalSection = currentSection === sections.length - 1;
         const fadeOutProgress = isFinalSection 
           ? 1 // Keep text visible for final section
-          : Math.max(0, Math.min(1, (0.9 - clampedProgress) / 0.1)); // Start fading at 90%, completely gone by 100%
+          : Math.max(0, Math.min(1, (0.95 - clampedProgress) / 0.05)); // Start fading at 95%, completely gone by 100%
         const finalTextProgress = Math.min(textProgress, fadeOutProgress);
         
         const linesToShow = Math.floor(finalTextProgress * sections[currentSection].text.length);
@@ -163,7 +163,7 @@ function ScrollSections() {
           key={section.title}
           ref={el => sectionRefs.current[index] = el}
           sx={{
-            height: index === sections.length - 1 ? '150vh' : '100vh', // Half height for all sections
+            height: '150vh', // All sections are now 150vh for longer scrolling
             position: 'relative',
             overflow: 'hidden'
           }}
