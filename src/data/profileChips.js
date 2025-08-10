@@ -16,13 +16,13 @@ export const profileChips = {
         {
           emoji: "🏠",
           text: "Homebody",
-          description: "Where you'll find me most of the time sleeping, coding, rolling on my exercise mats, watching a movie or playing a game",
+          description: "Where you'll find me most of the time sleeping, coding, rolling on my exercise mats, watching a movie or playing a game. Fun fact I learned to cut my own hair during covid",
         image: "/chips/homebody.jpg"
         },
       {
         emoji: "🇯🇵",
         text: "Japan",
-        description: "I've been to Japan 6 times, learned enough for basic conversation in highschool and occasionally watch anime",
+        description: "I've been to Japan 6 times, learned enough Japanese for basic conversation in highschool and occasionally watch anime",
         image: "/chips/japan.jpg"
       },
       {
@@ -128,6 +128,11 @@ export const profileChips = {
         text: "Cat-lover",
         description: "I love cats and have a soft spot for them. They're independent, curious, and make great companions",
         image: "/chips/cat.jpg"
+      },
+      {
+        emoji: "👉👈",
+        text: "Introverted",
+        description: "If coding a whole dating profile wasn't evidence enough, I am introverted"
       },
       {
         emoji: "✈️",
