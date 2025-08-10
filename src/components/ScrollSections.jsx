@@ -1,6 +1,7 @@
-import { Box, Typography, useTheme, IconButton, TextField, Button, Alert } from '@mui/material';
-import { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Typography, Paper, useTheme, IconButton, TextField, Button, Alert } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import useDiscordWebhook from '../hooks/useDiscordWebhook';
 
 const sections = [
   {
@@ -54,46 +55,22 @@ const sections = [
 function ScrollSections() {
   const theme = useTheme();
   const [activeSection, setActiveSection] = useState(0);
-  const [visibleLines, setVisibleLines] = useState(0);
   const [sectionProgress, setSectionProgress] = useState(0);
+  const [visibleLines, setVisibleLines] = useState(0);
   const [profileSectionHeight, setProfileSectionHeight] = useState(0);
   const [anonymousMessage, setAnonymousMessage] = useState('');
-  const [messageSent, setMessageSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState('');
-  const sectionRefs = useRef(sections.map(() => null));
-  const profileSectionRef = useRef(null);
+  
+  const sectionRefs = useRef([]);
+  
+  // Use the custom Discord webhook hook
+  const { sendMessage, sending, messageSent, error } = useDiscordWebhook();
 
-  const sendAnonymousMessage = async () => {
-    if (!anonymousMessage.trim() || anonymousMessage.length > 100) return;
-    
-    setSending(true);
-    setError('');
-    
-    try {
-      const response = await fetch('https://discord.com/api/webhooks/1403719689456320603/QtPOgoai6d1jafWzBmSlyOr_mUeU1MrIdmr7VHpyWtUKeqeLSilXtq7VXofq-S9iUmfP', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          content: `💌 **Anonymous Message:** ${anonymousMessage}`,
-          username: 'Dating Profile Visitor'
-        })
-      });
-      
-      if (response.ok) {
-        setMessageSent(true);
-        setAnonymousMessage('');
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (err) {
-      setError('Failed to send message. Please try again.');
-    } finally {
-      setSending(false);
+  // Clear message input after successful sending
+  useEffect(() => {
+    if (messageSent) {
+      setAnonymousMessage('');
     }
-  };
+  }, [messageSent]);
 
   useEffect(() => {
     // Get ProfileSection height dynamically
@@ -450,29 +427,15 @@ function ScrollSections() {
                         
                         <Button
                           variant="contained"
-                          onClick={sendAnonymousMessage}
+                          onClick={() => sendMessage(`💌 **Anonymous Message:** ${anonymousMessage}`)}
                           disabled={!anonymousMessage.trim() || anonymousMessage.length > 100 || sending}
                           sx={{
-                            backgroundColor: '#E91E63',
-                            color: 'white',
-                            px: 4,
+                            px: 3,
                             py: 1.5,
-                            borderRadius: 2,
-                            textTransform: 'none',
                             fontSize: '1rem',
-                            fontWeight: 'bold',
-                            boxShadow: '0 4px 8px rgba(233, 30, 99, 0.3)',
+                            background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                             '&:hover': {
-                              backgroundColor: '#C2185B',
-                              boxShadow: '0 6px 12px rgba(233, 30, 99, 0.4)',
-                            },
-                            '&:disabled': {
-                              backgroundColor: theme.palette.mode === 'dark' 
-                                ? theme.palette.grey[700] 
-                                : theme.palette.grey[400],
-                              color: theme.palette.mode === 'dark' 
-                                ? theme.palette.grey[500] 
-                                : theme.palette.grey[600],
+                              background: `linear-gradient(45deg, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`
                             }
                           }}
                         >
