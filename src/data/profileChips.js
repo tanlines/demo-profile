@@ -5,7 +5,7 @@ export const profileChips = {
         {
           emoji: "🍎",
           text: "Health",
-          description: "We only get one body, take care of it. Where possible I avoid junk food, exercise regularly and keep myself and my surroundings clean"
+          description: "We only get one body, take care of it. Where possible I avoid junk food, exercise regularly and keep myself and my surroundings clean. Apparently needs to be said, but I brush/floss/shower daily, also recently installed a bidet for my ass"
         },
         {
           emoji: "💃",
@@ -28,7 +28,7 @@ export const profileChips = {
       {
         emoji: "🌿",
         text: "Nature",
-        description: "I like going for walks and watching sunsets for the fresh air and a bit of exercise",
+        description: "I like going for walks and watching sunsets for the fresh air and a bit of exercise.",
         image: "/chips/nature.jpg"
       },
       {
@@ -39,7 +39,7 @@ export const profileChips = {
       {
         emoji: "🧘",
         text: "Yoga",
-        description: "Taking classes to improve my flexibility for dancing"
+        description: "Taking classes to improve my flexibility for dancing. Also a nice chill way to wind down and reminder to focus on breathing"
       },
       {
         emoji: "🧗",
@@ -65,7 +65,7 @@ export const profileChips = {
       {
         emoji: "⏰",
         text: "Consistency",
-        description: "Consistent communication via text or call, making time for each other and checking in on each other"
+        description: "I like consistent communication via text or call, making time for each other and quick check ins on each other"
       },
       {
         emoji: "🗣️",
@@ -95,7 +95,7 @@ export const profileChips = {
       {
         emoji: "📋",
         text: "Planning",
-        description: "I like to plan at least one main objective for a date and book ahead where possible, the rest can be flexible."
+        description: "I like to plan at least one main objective for a date and book ahead where possible, the rest can be flexible. Bonus if there's a discount I can take advantage of. I always check the weather and will have an umbrella on me at all times."
       },
       {
         emoji: "🍕",
@@ -121,12 +121,12 @@ export const profileChips = {
       {
         emoji: "💰",
         text: "Finances",
-        description: "I save most of my money and am investing in ETFs. I track my expenses monthly and try to make sensible purchases for long term"
+        description: "I save most of my money and am investing in ETFs. I track my expenses monthly and try to make sensible purchases for long term. I did grow up being quite frugal which I'm trying to break out of as there are so many enriching ways to spend money that aren't immediately obvious."
       },
       {
         emoji: "🐱",
         text: "Cat-lover",
-        description: "I love cats and have a soft spot for them. They're independent, curious, and make great companions",
+        description: "I prefer cats over dogs, but I currently don't have one, maybe a British Shorthair in the future. Otherwise I like cat cafes and street cats.",
         image: "/chips/cat.jpg"
       },
       {

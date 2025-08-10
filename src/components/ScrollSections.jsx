@@ -11,7 +11,7 @@ const sections = [
     text: [
       "This website is a combination of my interest in web development, tool for self-reflection and desire for a relationship",
       "If nothing else, I hope you at least find my take of a dating profile interesting",
-      "I wish you all the best and hope you find what you're looking for"
+      "If you're also looking for a relationship, I wish you all the best and hope you find what you're looking for"
     ]
   },
   {
@@ -20,8 +20,8 @@ const sections = [
     gradient: "linear-gradient(45deg, #E91E63 30%, #9C27B0 90%)",
     text: [
       "If you're interested in getting to know me better",
-      "Feel free to reach out on Instagram",
-      "Or leave an anonymous message below"
+      "feel free to reach out on Instagram",
+      "or leave an anonymous message below"
     ],
     contactInfo: {
       instagram: "vi_ce_t",
