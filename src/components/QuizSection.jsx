@@ -2,19 +2,29 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, Paper, Button, useTheme } from '@mui/material';
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 
+  
+const questions = [
+  { title: "Winter", emoji: "❄️" },
+  { title: "Cat", emoji: "🐱" },
+  { title: "Sushi", emoji: "🍣" },
+  { title: "Tea", emoji: "🍵" },
+  { title: "Sunset", emoji: "🌅" }
+];
+
+// Array for result messages based on yesCount for better readability
+const resultMessages = [
+  "We were never meant to be 💔",
+  "Better than nothing 🤷‍♂️",
+  "We can make it work 🤝",
+  "Let's be friends 🤝",
+  "No one's perfect ✨",
+  "You are the one 💕"
+];
 const QuizSection = () => {
   const theme = useTheme();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
-  
-  const questions = [
-    { title: "Winter", emoji: "❄️" },
-    { title: "Cat", emoji: "🐱" },
-    { title: "Sushi", emoji: "🍣" },
-    { title: "Tea", emoji: "🍵" },
-    { title: "Sunset", emoji: "🌅" }
-  ];
   
   // Create separate motion values for each question
   const motionValues = questions.map(() => ({
@@ -63,6 +73,7 @@ const QuizSection = () => {
   if (isCompleted) {
     const yesCount = answers.filter(answer => answer).length;
     const noCount = answers.filter(answer => !answer).length;
+  
     
     return (
       <
@@ -78,11 +89,6 @@ const QuizSection = () => {
             border: `1px solid ${theme.palette.primary.main}30`
           }}
         >
-          
-          <Typography variant="h5" gutterBottom sx={{ mb: 4 }}>
-            Your Results 🎉
-          </Typography>
-          
           <Box sx={{ display: 'flex', justifyContent: 'space-around', mb: 4 }}>
             <Box sx={{ textAlign: 'center' }}>
               <Typography variant="h2" sx={{ color: 'error.main' }}>
@@ -100,24 +106,9 @@ const QuizSection = () => {
           
           {/* Final dramatic message based on yes count */}
           <Box sx={{ textAlign: 'center', mb: 4 }}>
-            {yesCount === 0 && (
-              <Typography variant="h4" sx={{ color: 'error.main', fontStyle: 'italic', fontWeight: 'bold' }}>
-                We were never meant to be 💔
-              </Typography>
-            )}
-            {yesCount === 5 && (
-              <Typography variant="h4" sx={{ color: 'success.main', fontStyle: 'italic', fontWeight: 'bold' }}>
-                You are the one 💕
-              </Typography>
-            )}
-            {yesCount > 0 && yesCount < 5 && (
-              <Typography variant="h5" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                {yesCount === 1 ? "Better than nothing" :
-                 yesCount === 2 ? "We can make it work" :
-                 yesCount === 3 ? "Let's be friends" :
-                 "No one's perfect"} ✨
-              </Typography>
-            )}
+          <Typography variant="h5" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
+            {resultMessages[yesCount]}
+          </Typography>
           </Box>
           
           <Button

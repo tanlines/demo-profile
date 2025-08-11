@@ -47,33 +47,37 @@ const QuoteBox = () => {
       }}
       onClick={handleQuoteClick}
     >
-      <Paper
-        elevation={8}
-        sx={{
-          p: 4,
-          maxWidth: '600px',
-          textAlign: 'center',
-          background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
-          border: `2px solid ${theme.palette.primary.main}30`,
-          borderRadius: 3,
-          position: 'relative',
-          overflow: 'hidden',
-          '&:hover': {
-            transform: 'translateY(-2px)',
-            boxShadow: theme.shadows[12],
-            transition: 'all 0.3s ease'
-          },
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '4px',
-            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`
-          }
-        }}
-      >
+              <Paper
+          elevation={8}
+          sx={{
+            p: 4,
+            maxWidth: '600px',
+            minHeight: '400px', // Fixed height for 5 lines of text
+            textAlign: 'center',
+            background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
+            border: `2px solid ${theme.palette.primary.main}30`,
+            borderRadius: 3,
+            position: 'relative',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: theme.shadows[12],
+              transition: 'all 0.3s ease'
+            },
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`
+            }
+          }}
+        >
         <AnimatePresence mode="wait">
           {isVisible && (
             <motion.div
