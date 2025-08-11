@@ -77,7 +77,7 @@ function ProfileSection() {
         {categoryData.title}
       </Typography>
       
-      <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center" sx={{ mb: 2 }}>
+      <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center" sx={{ mb: 2}}>
         {categoryData.chips.map((chip, index) => (
           <Chip 
             key={`${chip.text}-${index}`}
@@ -88,7 +88,6 @@ function ProfileSection() {
               borderColor: theme.palette.primary.main,
               color: selectedChip?.text === chip.text ? theme.palette.primary.contrastText : theme.palette.primary.main,
               backgroundColor: selectedChip?.text === chip.text ? theme.palette.primary.main : 'transparent',
-              mb: 1.5,
               cursor: 'pointer',
               '&:hover': {
                 backgroundColor: selectedChip?.text === chip.text ? theme.palette.primary.dark : theme.palette.primary.light,
@@ -180,7 +179,7 @@ function ProfileSection() {
     >
       <ProfilePicture />
       <Typography
-        variant="h3"
+        variant="h4"
         sx={{
           mb: 3,
           color: theme.palette.text.primary,

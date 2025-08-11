@@ -64,7 +64,7 @@ function ProfilePicture() {
   }, [currentAvatarIndex]);
 
   return (
-    <Box sx={{ position: 'relative', width: 200, height: 200, mb: 3 }}>
+    <Box sx={{ position: 'relative', width: 250, height: 250, mb: 3 }}>
       {/* Gradient background */}
       <Box
         sx={{

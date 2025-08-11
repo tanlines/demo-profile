@@ -22,6 +22,17 @@ export function ThemeProvider({ children }) {
     palette: {
       mode: mode === 'system' ? getSystemTheme() : mode,
     },
+    components: {
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            '&.MuiChip-root': {
+              marginBottom: '6px !important',
+            },
+          },
+        },
+      },
+    },
   });
 
   const toggleTheme = (newMode) => {

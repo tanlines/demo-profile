@@ -86,6 +86,11 @@ export const profileChips = {
         emoji: "🙌",
         text: "Support",
         description: "Someone to be present in the highs and lows of life and likewise I'll be there for you"
+      },
+      {
+        emoji: "🚭",
+        text: "Smoking/Drugs",
+        description: "This is a smoking and drug free zone, never tried and don't plan to"
       }
     ]
   },
@@ -212,11 +217,6 @@ export const profileChips = {
         text: "Food",
         description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it",
         image: "/chips/food.jpg"
-      },
-      {
-        emoji: "🚭",
-        text: "Smoking",
-        description: "This is a smoking free zone, tried plenty of times secondhand, don't believe i'll ever try"
       },
       {
         emoji: "⛪",
