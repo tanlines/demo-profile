@@ -63,6 +63,11 @@ export const profileChips = {
         description: "I'm straight and I can prove it"
       },
       {
+        emoji: "💑",
+        text: "Compatibility",
+        description: "Similar lifestyle, beliefs and values are important, to varying degrees. Not necessarily looking for an exact copy of myself, but someone I can build a life with"
+      },
+      {
         emoji: "⏰",
         text: "Consistency",
         description: "I like consistent communication via text or call, making time for each other and quick check ins on each other"
@@ -94,32 +99,62 @@ export const profileChips = {
       },
       {
         emoji: "💬",
-        text: "Texting",
-        description: "I enjoy daily quick check in texts, I can also text all day if there's something happening that day"
+        text: "Texting/Calling",
+        description: "I enjoy daily quick check in texts, I can also text all day if there's something happening that day and we can't meet. I don't expect immediate replies all the time, if there's something lengthy to talk about, finding time to call is better"
       },
       {
         emoji: "📋",
         text: "Planning",
-        description: "I like to plan at least one main objective for a date and book ahead where possible, the rest can be flexible. Bonus if there's a discount I can take advantage of. I always check the weather and will have an umbrella on me at all times."
+        description: "I like to plan at least one main objective for a date and book ahead where possible, the rest can be flexible. Bonus if there's a discount I can take advantage of. I always check the weather and will have an umbrella on me most of the time."
       },
       {
-        emoji: "🍕",
-        text: "Food",
-        description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it",
-        image: "/chips/food.jpg"
+        emoji: "🔒",
+        text: "Exclusivity",
+        description: "Within the first month I'd like to clarify where we stand and not make assumptions."
+      }
+    ]
+  },
+  firstDate: {
+    title: "First Date",
+    chips: [
+      {
+        emoji: "👀",
+        text: "Expectations",
+        description: "Before we meet, we're basically strangers, no pressure. If we make plans, I hope we can check in and stay on the same page until we meet. I would prefer not to text for too long before meeting, maybe a week or so."
+      },
+      {
+        emoji: "🏙️",
+        text: "Location",
+        description: "Around the city is generally most convenient for me, otherwise I can drive, hopefully there's good parking"
+      },
+      {
+        emoji: "⏰",
+        text: "Time",
+        description: "Currently job hunting so I'm available most days, weekday nights I may have yoga/dance classes on"
+      },
+      {
+        emoji: "🍽️",
+        text: "Coffee/Dinner",
+        description: "I'm happy to have a coffee (or tea) date given availability and convenience, otherwise dinner is great too. If you have any recommendations, let me know otherwise I'll look around."
       },
       {
         emoji: "🎬",
         text: "Movies",
-        description: "If there's something interesting on otherwise I'll watch what I like at home"
+        description: "If there's something we're both interested in we can go watch. My favourite genres are sci-fi, action, comedy and adventure."
       },
       {
         emoji: "🎯",
         text: "Activity",
-        description: "I enjoy doing something active to get to know someone better e.g arcade games, bouldering, badminton, darts, minigolf etc."
+        description: "I enjoy doing something active to get to know someone better e.g arcade rhythm games, bouldering etc. if you're interested. Other activities like exhibits, museums, art galleries are also great."
+      },
+      {
+        emoji: "🚶",
+        text: "Walk",
+        description: "Any combination of the above activities and going for a walk would be nice"
       }
     ]
   },
+  
   otherInfo: {
     title: "Other/Extra Info",
     chips: [
@@ -171,6 +206,12 @@ export const profileChips = {
         emoji: "🎓",
         text: "UNSW",
         description: "Photovoltaic Engineering/Computer Science. Only ended up using the computer science part."
+      },
+      {
+        emoji: "🍕",
+        text: "Food",
+        description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it",
+        image: "/chips/food.jpg"
       },
       {
         emoji: "🚭",
