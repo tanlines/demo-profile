@@ -34,7 +34,7 @@ export const profileChips = {
       {
         emoji: "🤖",
         text: "AI",
-        description: "AI is already here to stay and it's best to learn to work with it. I don't enjoy thinking about the potential implications it has on our future so might as well try to be prepared. Yes I did use AI to help code this profile"
+        description: "AI is already here to stay and it's best to learn to work with it, it's by far the most powerful tool for learning in human history. I don't enjoy thinking about the potential implications it has on our future but might as well try to be prepared. Yes I did use AI to help code this profile"
       },
       {
         emoji: "🧘",
@@ -76,6 +76,11 @@ export const profileChips = {
         emoji: "🌱",
         text: "Growth",
         description: "I think there's always something to improve on, a new skill, trying a new hobby, upskilling for work or self reflection to be a better person"
+      },
+      {
+        emoji: "🙌",
+        text: "Support",
+        description: "Someone to be present in the highs and lows of life and likewise I'll be there for you"
       }
     ]
   },

@@ -6,7 +6,8 @@ const quotes = [
   "Read the news to stay informed, not live in fear",
   "Money isn't everything but it makes everything else easier",
   "A healthy man wants a thousand things, but a sick man only wants one",
-  "If you want to go fast, go alone. If you want to go far, go together."
+  "If you want to go fast, go alone. If you want to go far, go together.",
+  "With about 100 productive hours a week, every hour is 1% of your life if that same week is repeated over and over"
 ];
 
 const QuoteBox = () => {
@@ -46,41 +47,41 @@ const QuoteBox = () => {
       }}
       onClick={handleQuoteClick}
     >
-      <AnimatePresence mode="wait">
-        {isVisible && (
-          <motion.div
-            key={currentQuote}
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: -20 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-          >
-            <Paper
-              elevation={8}
-              sx={{
-                p: 4,
-                maxWidth: '600px',
-                textAlign: 'center',
-                background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
-                border: `2px solid ${theme.palette.primary.main}30`,
-                borderRadius: 3,
-                position: 'relative',
-                overflow: 'hidden',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: theme.shadows[12],
-                  transition: 'all 0.3s ease'
-                },
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`
-                }
-              }}
+      <Paper
+        elevation={8}
+        sx={{
+          p: 4,
+          maxWidth: '600px',
+          textAlign: 'center',
+          background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
+          border: `2px solid ${theme.palette.primary.main}30`,
+          borderRadius: 3,
+          position: 'relative',
+          overflow: 'hidden',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: theme.shadows[12],
+            transition: 'all 0.3s ease'
+          },
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '4px',
+            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`
+          }
+        }}
+      >
+        <AnimatePresence mode="wait">
+          {isVisible && (
+            <motion.div
+              key={currentQuote}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <Typography
                 variant="h5"
@@ -105,22 +106,22 @@ const QuoteBox = () => {
               >
                 — {currentQuote.split(' - ')[1]}
               </Typography>
-              
-              <Typography
-                variant="caption"
-                sx={{
-                  display: 'block',
-                  mt: 2,
-                  color: theme.palette.text.disabled,
-                  fontStyle: 'italic'
-                }}
-              >
-                Click for another quote
-              </Typography>
-            </Paper>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <Typography
+          variant="caption"
+          sx={{
+            display: 'block',
+            mt: 2,
+            color: theme.palette.text.disabled,
+            fontStyle: 'italic'
+          }}
+        >
+          Click for another quote
+        </Typography>
+      </Paper>
     </Box>
   );
 };
