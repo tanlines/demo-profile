@@ -5,7 +5,7 @@ export const profileChips = {
         {
           emoji: "🍎",
           text: "Health",
-          description: "We only get one body, take care of it. Where possible I avoid junk food, exercise regularly and keep myself and my surroundings clean. Apparently needs to be said, but I brush/floss/shower daily, also recently installed a bidet for my ass"
+          description: "We only get one body, take care of it. Where possible I avoid junk food, exercise regularly and keep myself and my surroundings clean."
         },
         {
           emoji: "💃",
@@ -18,6 +18,11 @@ export const profileChips = {
           text: "Homebody",
           description: "Where you'll find me most of the time sleeping, coding, rolling on my exercise mats, watching a movie or playing a game. Fun fact I learned to cut my own hair during covid",
         image: "/chips/homebody.jpg"
+        },
+        {
+          emoji: "🔍",
+          text: "Problem solving",
+          description: "I enjoy solving problems, especially when it solves a daily annoyance, saves money or is creative."
         },
       {
         emoji: "🇯🇵",
@@ -207,12 +212,6 @@ export const profileChips = {
         image: "/chips/snowboarding.jpg"
       },
       {
-        emoji: "🏸",
-        text: "Badminton",
-        description: "Played for 5 years in high school, I still remember my training but the knees are not what they used to be",
-        image: "/chips/badminton.jpg"
-      },
-      {
         emoji: "🎓",
         text: "UNSW",
         description: "Photovoltaic Engineering/Computer Science. Only ended up using the computer science part."
@@ -222,6 +221,27 @@ export const profileChips = {
         text: "Food",
         description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it",
         image: "/chips/food.jpg"
+      },
+      {
+        emoji: "🌶️",
+        text: "Spice",
+        description: "Spice tolerance is Shin Ramyun level. I would still rather be able to taste my food and not just spice."
+      },
+      {
+        emoji: "🧼",
+        text: "Skincare",
+        description: "Simple routine of foaming cleanser, occasional salicylic acid wash, hyaluronic acid moisturizer and sunscreen. For my skin health as much as looks."
+      },
+      {
+        emoji: "🫧",
+        text: "Hygiene",
+        description: "Apparently needs to be said, but I brush/floss/shower daily, also recently installed a bidet for my ass. I've bought 2 robot vacuums and a wireless Dyson vacuum because I'm lazy but still want a clean home."
+      },
+      {
+        emoji: "🏸",
+        text: "Badminton",
+        description: "Played for 5 years in high school, I still remember my training but the knees are not what they used to be",
+        image: "/chips/badminton.jpg"
       }
     ]
   }
