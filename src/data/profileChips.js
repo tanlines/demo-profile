@@ -91,6 +91,11 @@ export const profileChips = {
         emoji: "🚭",
         text: "Smoking/Drugs",
         description: "This is a smoking and drug free zone, never tried and don't plan to"
+      },
+      {
+        emoji: "⛪",
+        text: "Agnostic",
+        description: "I think religions that claim to be the only correct religion are overstepping. I'm otherwise skeptical and would rather try to see how one's beliefs benefit individuals and communities."
       }
     ]
   },
@@ -150,7 +155,7 @@ export const profileChips = {
       {
         emoji: "🎯",
         text: "Activity",
-        description: "I enjoy doing something active to get to know someone better e.g arcade rhythm games, bouldering etc. if you're interested. Other activities like exhibits, museums, art galleries are also great."
+        description: "I enjoy doing something active to get to know someone better e.g arcade rhythm games, bouldering, escape rooms etc. if you're interested. Other activities like exhibits, museums, art galleries are also great."
       },
       {
         emoji: "🚶",
@@ -217,11 +222,6 @@ export const profileChips = {
         text: "Food",
         description: "My favourite food is Japanese, otherwise most asian food/gourmet pizza is good for me. I don't usually have dessert but if it's not too sweet, I'll try it",
         image: "/chips/food.jpg"
-      },
-      {
-        emoji: "⛪",
-        text: "Agnostic",
-        description: "I think it's a bit bold for religions to claim they're the only correct religion. I'm otherwise skeptical and would rather try to see how one's beliefs benefit individuals and communities."
       }
     ]
   }
