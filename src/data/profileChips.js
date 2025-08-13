@@ -22,7 +22,7 @@ export const profileChips = {
         {
           emoji: "🔍",
           text: "Problem solving",
-          description: "I enjoy solving problems, especially when it solves a daily annoyance, saves money or is creative."
+          description: "I enjoy solving problems, especially when it solves a daily annoyance, saves money without compromising quality or is creative."
         },
       {
         emoji: "🇯🇵",
