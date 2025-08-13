@@ -60,7 +60,7 @@ export const profileChips = {
       {
         emoji: "💍",
         text: "Monogamy",
-        description: "I don't enjoy dating multiple people at the same time, naturally I'm not into polyamory, open relationships or cheating"
+        description: "Naturally I'm not into polyamory, open relationships or cheating. I don't enjoy dating multiple people at the same time but I understand it has its place in the early stages of online dating"
       },
       {
         emoji: "👫",
@@ -131,7 +131,7 @@ export const profileChips = {
       {
         emoji: "🔒",
         text: "Exclusivity",
-        description: "Within the first month I'd like to clarify where we stand and not make assumptions."
+        description: "I'd like to clarify where we stand and not make assumptions. Personally I'd like to check in within the first month."
       }
     ]
   },
