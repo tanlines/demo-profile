@@ -95,12 +95,18 @@ export const profileChips = {
       {
         emoji: "🚭",
         text: "Smoking/Drugs",
-        description: "This is a smoking and drug free zone, never tried and don't plan to"
+        description: "This is a smoking and drug free zone, never tried and don't plan to",
+        image: "/chips/smoke.jpg"
       },
       {
         emoji: "⛪",
         text: "Agnostic",
         description: "I think religions that claim to be the only correct religion are overstepping. I'm otherwise skeptical and would rather try to see how one's beliefs benefit individuals and communities."
+      },
+      {
+        emoji: "👫",
+        text: "Friends",
+        description: "If we have common interests and you just want to be friends, I'm open to that as well, let me know!"
       }
     ]
   },
@@ -115,7 +121,7 @@ export const profileChips = {
       {
         emoji: "💬",
         text: "Texting/Calling",
-        description: "I enjoy daily quick check in texts, I can also text all day if there's something happening that day and we can't meet. I don't expect immediate replies all the time, if there's something lengthy to talk about, finding time to call is better"
+        description: "I enjoy daily quick check in texts, I can also text all day if there's something happening that day and we can't meet. If there's something lengthy to talk about, finding time to call is better. I try to at least acknowledge messages quickly and if its urgent I'll respond immediately, otherwise I'll finish what I'm doing and get back to you."
       },
       {
         emoji: "📋",
@@ -150,12 +156,13 @@ export const profileChips = {
       {
         emoji: "🍽️",
         text: "Coffee/Dinner",
-        description: "I'm happy to have a coffee (or tea) date given availability and convenience, otherwise dinner is great too. If you have any recommendations, let me know otherwise I'll look around."
+        description: "I'm happy to have a coffee (or tea) date given availability and convenience, otherwise dinner is great too. If you have any recommendations, let me know otherwise I'll look around.",
+        image: "/chips/coffee.jpg"
       },
       {
         emoji: "🎬",
         text: "Movies",
-        description: "If there's something we're both interested in we can go watch. My favourite genres are sci-fi, action, comedy and adventure."
+        description: "If there's something we're both interested in we can go watch. My favourite genres are sci-fi, action, psychological thrillers, comedy and adventure."
       },
       {
         emoji: "🎯",
@@ -165,7 +172,8 @@ export const profileChips = {
       {
         emoji: "🚶",
         text: "Walk",
-        description: "Any combination of the above activities and going for a walk would be nice"
+        description: "Any combination of the above activities and going for a walk would be nice",
+        image: "/chips/walk.jpg"
       }
     ]
   },
@@ -192,7 +200,8 @@ export const profileChips = {
       {
         emoji: "✈️",
         text: "Travel",
-        description: "I might travel overseas once a year, usually New Zealand or Japan. Travelled first time solo to Japan in 2024. I wouldn't consider myself much of a travel enthusiast."
+        description: "I might travel overseas once a year, usually New Zealand or Japan. Travelled first time solo to Japan in 2024. I wouldn't consider myself much of a travel enthusiast.",
+        image: "/chips/bungy.jpg"
       },
       {
         emoji: "👨‍🍳",
@@ -203,7 +212,8 @@ export const profileChips = {
       {
         emoji: "📸",
         text: "Photography",
-        description: "I practice the basics of checking light, composition and framing so I can take better photos, just enough to be able to take not completely shit photos of my friends, family and nature. I'll be patient if you need me to get the perfect shot of you"
+        description: "I practice the basics of checking light, composition and framing so I can take better photos, just enough to be able to take not completely shit photos of my friends, family and nature. I'll be patient if you need me to get the perfect shot of you",
+        image: "/chips/mountain.jpg"
       },
       {
         emoji: "🏂",
@@ -225,7 +235,8 @@ export const profileChips = {
       {
         emoji: "🌶️",
         text: "Spice",
-        description: "Spice tolerance is Shin Ramyun level. I would still rather be able to taste my food and not just spice."
+        description: "Spice tolerance is Shin Ramyun level. I would still rather be able to taste my food and not just spice.",
+        image: "/chips/noodles.jpg"
       },
       {
         emoji: "🧼",
