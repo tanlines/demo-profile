@@ -131,7 +131,7 @@ export const profileChips = {
       {
         emoji: "🔒",
         text: "Exclusivity",
-        description: "I'd like to clarify where we stand and not make assumptions. Personally I'd like to check in within the first month."
+        description: "I want to clarify where we stand and not make assumptions. Personally I'd like to check in within the first month."
       }
     ]
   },

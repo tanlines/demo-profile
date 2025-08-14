@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Avatar, useTheme, Box } from '@mui/material';
+import { Avatar, useTheme, Box, IconButton } from '@mui/material';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 function ProfilePicture() {
   const theme = useTheme();
@@ -37,6 +38,14 @@ function ProfilePicture() {
   };
 
   const handleAvatarClick = () => {
+    changeAvatar('next');
+  };
+
+  const handlePrevious = () => {
+    changeAvatar('prev');
+  };
+
+  const handleNext = () => {
     changeAvatar('next');
   };
 
@@ -79,9 +88,9 @@ function ProfilePicture() {
             #61dafb 50%, 
             ${theme.palette.primary.light || '#90caf9'} 75%, 
             ${theme.palette.primary.main} 100%)`,
-          borderRadius: '50%',
+          borderRadius: '12px',
           zIndex: -1,
-          animation: 'gradient-rotate 8s ease-in-out infinite',
+
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -95,7 +104,7 @@ function ProfilePicture() {
               #61dafb 50%, 
               ${theme.palette.primary.light || '#90caf9'} 75%, 
               ${theme.palette.primary.main} 100%)`,
-            borderRadius: '50%',
+            borderRadius: '12px',
             filter: 'blur(8px)',
             opacity: 0.7,
             zIndex: -2,
@@ -111,6 +120,7 @@ function ProfilePicture() {
           width: '100%',
           height: '100%',
           border: `4px solid ${theme.palette.primary.main}`,
+          borderRadius: '12px',
           boxShadow: theme.shadows[4],
           cursor: 'pointer',
           position: 'relative',
@@ -123,6 +133,44 @@ function ProfilePicture() {
           }
         }}
       />
+
+      {/* Previous button */}
+      <IconButton
+        onClick={handlePrevious}
+        sx={{
+          position: 'absolute',
+          left: -50,
+          top: '50%',
+          transform: 'translateY(-50%)',
+          color: theme.palette.primary.main,
+          '&:hover': {
+            color: theme.palette.primary.light,
+            transform: 'translateY(-50%) scale(1.1)',
+          },
+          zIndex: 3,
+        }}
+      >
+        <ChevronLeft />
+      </IconButton>
+
+      {/* Next button */}
+      <IconButton
+        onClick={handleNext}
+        sx={{
+          position: 'absolute',
+          right: -50,
+          top: '50%',
+          transform: 'translateY(-50%)',
+          color: theme.palette.primary.main,
+          '&:hover': {
+            color: theme.palette.primary.light,
+            transform: 'translateY(-50%) scale(1.1)',
+          },
+          zIndex: 3,
+        }}
+      >
+        <ChevronRight />
+      </IconButton>
       
       {/* Black overlay for fade effect */}
       <Box
@@ -136,20 +184,12 @@ function ProfilePicture() {
           opacity: isTransitioning ? 0.1 : 0,
           transition: 'opacity 0.1s linear',
           pointerEvents: 'none',
-          borderRadius: '50%',
+          borderRadius: '12px',
           zIndex: 2,
         }}
       />
       
-      {/* CSS Animation for gradient rotation */}
-      <style>
-        {`
-          @keyframes gradient-rotate {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
-          }
-        `}
-      </style>
+
     </Box>
   );
 }
