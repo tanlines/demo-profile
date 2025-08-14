@@ -85,6 +85,7 @@ const QuizSection = () => {
             textAlign: 'center',
             maxWidth: 600,
             width: '100%',
+            minHeight: 300,
             background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
             border: `1px solid ${theme.palette.primary.main}30`
           }}
@@ -136,10 +137,6 @@ const QuizSection = () => {
     <
     >
       
-      <Typography variant="body1" sx={{ textAlign: 'center', mb: 4, opacity: 0.8 }}>
-        Question {currentQuestionIndex + 1} of {questions.length}
-      </Typography>
-      
       {/* Map over questions array and generate a component for each */}
       {questions.map((question, index) => (
         <Box
@@ -147,8 +144,8 @@ const QuizSection = () => {
           sx={{
             position: 'relative',
             width: '100%',
-            maxWidth: 400,
-            height: 200,
+            maxWidth: 600,
+            minHeight: 300,
             display: index === currentQuestionIndex ? 'block' : 'none'
           }}
         >
@@ -191,76 +188,76 @@ const QuizSection = () => {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'center'
+                  justifyContent: 'space-between',
+                  position: 'relative'
                 }}
               >
-                <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: '3rem' }}>
-                  {question.emoji}
+                {/* Question number at the top */}
+                <Typography variant="body1" sx={{ opacity: 0.8, fontSize: '0.9rem' }}>
+                  Question {currentQuestionIndex + 1} of {questions.length}
                 </Typography>
-                
-                <Typography variant="h5" component="h3" gutterBottom>
-                  {question.title}
-                </Typography>
-                
-                <Typography variant="body2" sx={{ opacity: 0.7, mt: 2 }}>
-                  Swipe or drag left for No, right for Yes
-                </Typography>
+
+                {/* Main content in the center */}
+                <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: '3rem' }}>
+                    {question.emoji}
+                  </Typography>
+                  
+                  <Typography variant="h5" component="h3" gutterBottom>
+                    {question.title}
+                  </Typography>
+                  
+                  <Typography variant="body2" sx={{ opacity: 0.7, mt: 2 }}>
+                    Swipe or drag left for No, right for Yes
+                  </Typography>
+                </Box>
+
+                {/* Buttons at the bottom */}
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+                  <Button
+                    variant="text"
+                    color="error"
+                    onClick={() => handleButtonClick(false)}
+                    sx={{
+                      minWidth: 'auto',
+                      px: 2,
+                      py: 1,
+                      '&:hover': {
+                        backgroundColor: 'error.main',
+                        color: 'white'
+                      }
+                    }}
+                  >
+                    <Typography variant="h6" sx={{ color: 'inherit' }}>
+                      ← No
+                    </Typography>
+                  </Button>
+                  <Button
+                    variant="text"
+                    color="success"
+                    onClick={() => handleButtonClick(true)}
+                    sx={{
+                      minWidth: 'auto',
+                      px: 2,
+                      py: 1,
+                      '&:hover': {
+                        backgroundColor: 'success.main',
+                        color: 'white'
+                      }
+                    }}
+                  >
+                    <Typography variant="h6" sx={{ color: 'inherit' }}>
+                      Yes →
+                    </Typography>
+                  </Button>
+                </Box>
               </Paper>
             </motion.div>
           </motion.div>
         </Box>
       ))}
       
-      {/* Swipe indicators as clickable buttons */}
-      <Box
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
-          maxWidth: 400,
-          mx: 'auto',
-          mt: 4,
-          opacity: 0.8
-        }}
-      >
-        <Button
-          variant="text"
-          color="error"
-          onClick={() => handleButtonClick(false)}
-          sx={{
-            minWidth: 'auto',
-            px: 2,
-            py: 1,
-            '&:hover': {
-              backgroundColor: 'error.main',
-              color: 'white'
-            }
-          }}
-        >
-          <Typography variant="h6" sx={{ color: 'inherit' }}>
-            ← No
-          </Typography>
-        </Button>
-        <Button
-          variant="text"
-          color="success"
-          onClick={() => handleButtonClick(true)}
-          sx={{
-            minWidth: 'auto',
-            px: 2,
-            py: 1,
-            '&:hover': {
-              backgroundColor: 'success.main',
-              color: 'white'
-            }
-          }}
-        >
-          <Typography variant="h6" sx={{ color: 'inherit' }}>
-            Yes →
-          </Typography>
-        </Button>
-      </Box>
+
       
     </>
   );
