@@ -11,7 +11,7 @@ const questions = [
   { title: "Sunset", emoji: "🌅" }
 ];
 
-// Array for result messages based on yesCount for better readability
+// Array for result messages based on likeCount for better readability
 const resultMessages = [
   "We were never meant to be 💔",
   "Better than nothing 🤷‍♂️",
@@ -37,10 +37,10 @@ const QuizSection = () => {
     const threshold = 5;
     
     if (info.offset.x > threshold) {
-      // Swiped right - Yes
+      // Swiped right - Like
       handleAnswer(true);
     } else if (info.offset.x < -threshold) {
-      // Swiped left - No
+      // Swiped left - Dislike
       handleAnswer(false);
     }
     
@@ -71,8 +71,8 @@ const QuizSection = () => {
   };
 
   if (isCompleted) {
-    const yesCount = answers.filter(answer => answer).length;
-    const noCount = answers.filter(answer => !answer).length;
+    const likeCount = answers.filter(answer => answer).length;
+    const dislikeCount = answers.filter(answer => !answer).length;
   
     
     return (
@@ -90,25 +90,27 @@ const QuizSection = () => {
             border: `1px solid ${theme.palette.primary.main}30`
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-around', mb: 4 }}>
-            <Box sx={{ textAlign: 'center' }}>
-              <Typography variant="h2" sx={{ color: 'error.main' }}>
-                {noCount}
-              </Typography>
-              <Typography variant="body1">No Answers</Typography>
-            </Box>
-            <Box sx={{ textAlign: 'center' }}>
-              <Typography variant="h2" sx={{ color: 'success.main' }}>
-                {yesCount}
-              </Typography>
-              <Typography variant="body1">Yes Answers</Typography>
-            </Box>
+          {/* Compatibility Score */}
+          <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Typography variant="h1" sx={{ 
+              color: theme.palette.primary.main,
+              fontWeight: 'bold',
+              mb: 1
+            }}>
+              {likeCount}/5
+            </Typography>
+            <Typography variant="h6" sx={{ 
+              color: 'text.secondary',
+              mb: 2
+            }}>
+              Compatibility Score
+            </Typography>
           </Box>
           
-          {/* Final dramatic message based on yes count */}
+          {/* Final dramatic message based on like count */}
           <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography variant="h5" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-            {resultMessages[yesCount]}
+            {resultMessages[likeCount]}
           </Typography>
           </Box>
           
@@ -208,7 +210,7 @@ const QuizSection = () => {
                   </Typography>
                   
                   <Typography variant="body2" sx={{ opacity: 0.7, mt: 2 }}>
-                    Swipe or drag left for No, right for Yes
+                    Swipe or drag left for Dislike, right for Like
                   </Typography>
                 </Box>
 
@@ -229,7 +231,7 @@ const QuizSection = () => {
                     }}
                   >
                     <Typography variant="h6" sx={{ color: 'inherit' }}>
-                      ← No
+                      ← Dislike
                     </Typography>
                   </Button>
                   <Button
@@ -247,7 +249,7 @@ const QuizSection = () => {
                     }}
                   >
                     <Typography variant="h6" sx={{ color: 'inherit' }}>
-                      Yes →
+                      Like →
                     </Typography>
                   </Button>
                 </Box>
