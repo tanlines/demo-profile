@@ -1,10 +1,11 @@
 import { Box, Typography, useTheme, Button, Chip, Stack, Paper } from '@mui/material';
-import { Link } from 'react-router-dom';  
+import { Link } from 'react-router-dom';   
 import { profileChips } from '../data/profileChips';
 import { useState } from 'react';
 import QuizSection from './QuizSection';
 import QuoteBox from './QuoteBox';
 import ProfilePicture from './ProfilePicture';
+import DateSpinner from './DateSpinner';
 
 function ProfileSection() {
   const theme = useTheme();
@@ -212,6 +213,7 @@ function ProfileSection() {
       </Box>
       <QuizSection/>
       <QuoteBox/>
+      <DateSpinner/>
     </Box>
   );
 }
