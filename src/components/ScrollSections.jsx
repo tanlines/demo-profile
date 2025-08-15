@@ -78,7 +78,7 @@ function ScrollSections() {
       const profileSection = document.querySelector('[data-profile-section]');
       if (profileSection) {
         const height = profileSection.offsetHeight;
-        setProfileSectionHeight(height*0.6);
+        setProfileSectionHeight(height*0.9);
       }
     };
 
