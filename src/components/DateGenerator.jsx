@@ -42,24 +42,49 @@ const DateGenerator = () => {
   const foodAdjectives = [
     'Spicy',
     'Sweet',
-    'Sour',
+    'Savoury',
+    'Tangy',
+    'Smoky',
+    'Mild',
+    'Zesty',
     'Bitter',
-    'Creamy',
-    'Crunchy',
-    'Soft',
-    'Hard',
-    'Fresh',
-    'Frozen',
-    'Hot',
-    'Cold',
-    'Warm',
-    'Cool',
-    'Rich',
-    'Light',
-    'Heavy',
-    'Delicate',
-    'Bold',
-    'Subtle'
+    'Umami',
+    'Peppery',
+    'Grilled',
+    'Roasted',
+    'Fried',
+    'Steamed',
+    'Baked',
+    'Raw',
+    'Slow-cooked',
+    'Braised',
+    'Stir-fried',
+    'Smoked',
+    'Seafood',
+    'Vegetarian',
+    'Vegan',
+    'Dairy-free',
+    'Gluten-free',
+    'Plant-based'
+  ];
+
+  const foodStyleAdjectives = [
+    'Authentic',
+    'Gourmet',
+    'Rustic',
+    'Street',
+    'Traditional',
+    'Modern',
+    'Artisanal',
+    'Fusion',
+    'Premium',
+    'Homestyle',
+    'Northern',
+    'Southern',
+    'Coastal',
+    'Mountain',
+    'Rural',
+    'Urban'
   ];
 
   const foodCuisines = [
@@ -108,6 +133,72 @@ const DateGenerator = () => {
     'Princess 👑'
   ];
 
+  const dressMaterialAdjectives = [
+    'Cotton',
+    'Linen',
+    'Silk',
+    'Velvet',
+    'Denim',
+    'Leather',
+    'Wool',
+    'Satin',
+    'Lace',
+    'Sequined',
+    'Slim-fit',
+    'Oversized',
+    'Tailored',
+    'Loose',
+    'Cropped',
+    'Floor-length',
+    'Midi',
+    'Mini',
+    'Flared',
+    'Bodycon',
+    'Bright',
+    'Pastel',
+    'Dark',
+    'Monochrome',
+    'Neon',
+    'Earth-toned',
+    'Jewel-toned',
+    'Metallic',
+    'Muted',
+    'Bold',
+    'Striped',
+    'Polka-dot',
+    'Floral',
+    'Plaid',
+    'Animal-print',
+    'Embroidered',
+    'Distressed',
+    'Studded',
+    'Ruffled',
+    'Tie-dye'
+  ];
+
+  const dressStyleAdjectives = [
+    'Summer',
+    'Winter',
+    'Evening',
+    'Daytime',
+    'Party',
+    'Festival',
+    'Travel',
+    'Wedding',
+    'Work',
+    'Lounge',
+    'Modern',
+    'Retro',
+    'Minimalist',
+    'Glamorous',
+    'Edgy',
+    'Chic',
+    'Playful',
+    'Romantic',
+    'Grunge',
+    'Futuristic'
+  ];
+
   // State options
   const stateOptions = [
     'Drunk 🍺',
@@ -137,13 +228,37 @@ const DateGenerator = () => {
   };
 
   const generateRandomFood = () => {
-    const adjective = foodAdjectives[Math.floor(Math.random() * foodAdjectives.length)];
+    const firstAdjective = foodAdjectives[Math.floor(Math.random() * foodAdjectives.length)];
+    const secondAdjective = foodStyleAdjectives[Math.floor(Math.random() * foodStyleAdjectives.length)];
     const cuisine = foodCuisines[Math.floor(Math.random() * foodCuisines.length)];
-    return `${adjective} ${cuisine}`;
+    
+    // Randomly decide whether to use 1 or 2 adjectives (70% chance for 2, 30% chance for 1)
+    const useTwoAdjectives = Math.random() < 0.7;
+    
+    if (useTwoAdjectives) {
+      return `${firstAdjective} ${secondAdjective} ${cuisine}`;
+    } else {
+      // Randomly choose which adjective to use
+      const useFirst = Math.random() < 0.5;
+      return useFirst ? `${firstAdjective} ${cuisine}` : `${secondAdjective} ${cuisine}`;
+    }
   };
 
   const generateRandomDress = () => {
-    return dressOptions[Math.floor(Math.random() * dressOptions.length)];
+    const materialAdjective = dressMaterialAdjectives[Math.floor(Math.random() * dressMaterialAdjectives.length)];
+    const styleAdjective = dressStyleAdjectives[Math.floor(Math.random() * dressStyleAdjectives.length)];
+    const dressStyle = dressOptions[Math.floor(Math.random() * dressOptions.length)];
+    
+    // Randomly decide whether to use 1 or 2 adjectives (70% chance for 2, 30% chance for 1)
+    const useTwoAdjectives = Math.random() < 0.7;
+    
+    if (useTwoAdjectives) {
+      return `${materialAdjective} ${styleAdjective} ${dressStyle}`;
+    } else {
+      // Randomly choose which adjective to use
+      const useMaterial = Math.random() < 0.5;
+      return useMaterial ? `${materialAdjective} ${dressStyle}` : `${styleAdjective} ${dressStyle}`;
+    }
   };
 
   const generateRandomState = () => {
@@ -186,6 +301,22 @@ const DateGenerator = () => {
       'Princess 👑': 'dressed like a princess'
     };
 
+    // Helper function to extract the base dress style from the two-adjective format
+    const getBaseDressStyle = (fullDressDescription) => {
+      const parts = fullDressDescription.split(' ');
+      if (parts.length >= 3) {
+        // Return the last part (the base dress style with emoji)
+        return parts[parts.length - 1];
+      }
+      return fullDressDescription;
+    };
+
+    // Helper function to get the dress phrase, handling both old and new formats
+    const getDressPhrase = (dressDescription) => {
+      const baseStyle = getBaseDressStyle(dressDescription);
+      return dressPhrases[baseStyle] || `wearing ${dressDescription.toLowerCase()}`;
+    };
+
     const statePhrases = {
       'Drunk 🍺': 'feeling a bit tipsy',
       'Sweaty 💦': 'feeling sweaty',
@@ -210,11 +341,11 @@ const DateGenerator = () => {
     };
 
     const templates = [
-      `Let's go on a date ${timePhrases[timeOfDay]} and have some ${food.toLowerCase()}, ${dressPhrases[dress]}, while ${statePhrases[state]}! 💕`,
-      `I'm thinking we should go out ${timePhrases[timeOfDay]} for ${food.toLowerCase()}, ${dressPhrases[dress]}, and just ${statePhrases[state]} together! ✨`,
-      `How about a date ${timePhrases[timeOfDay]}? We'll get ${food.toLowerCase()}, ${dressPhrases[dress]}, while ${statePhrases[state]}! 🎭`,
-      `Perfect date idea: ${timePhrases[timeOfDay]} we'll grab ${food.toLowerCase()}, ${dressPhrases[dress]}, and we'll be ${statePhrases[state]}! 🌟`,
-      `Let's make it a date ${timePhrases[timeOfDay]}! ${food} sounds perfect, ${dressPhrases[dress]}, while ${statePhrases[state]}! 💫`
+      `Let's go on a date ${timePhrases[timeOfDay]} and have some ${food.toLowerCase()}, ${getDressPhrase(dress)}, while ${statePhrases[state]}! 💕`,
+      `I'm thinking we should go out ${timePhrases[timeOfDay]} for ${food.toLowerCase()}, ${getDressPhrase(dress)}, and just ${statePhrases[state]} together! ✨`,
+      `How about a date ${timePhrases[timeOfDay]}? We'll get ${food.toLowerCase()}, ${getDressPhrase(dress)}, while ${statePhrases[state]}! 🎭`,
+      `Perfect date idea: ${timePhrases[timeOfDay]} we'll grab ${food.toLowerCase()}, ${getDressPhrase(dress)}, and we'll be ${statePhrases[state]}! 🌟`,
+      `Let's make it a date ${timePhrases[timeOfDay]}! ${food} sounds perfect, ${getDressPhrase(dress)}, while ${statePhrases[state]}! 💫`
     ];
 
     return templates[Math.floor(Math.random() * templates.length)];
@@ -232,13 +363,37 @@ const DateGenerator = () => {
     };
 
     const generateRandomDisplayFood = () => {
-      const adjective = foodAdjectives[Math.floor(Math.random() * foodAdjectives.length)];
+      const firstAdjective = foodAdjectives[Math.floor(Math.random() * foodAdjectives.length)];
+      const secondAdjective = foodStyleAdjectives[Math.floor(Math.random() * foodStyleAdjectives.length)];
       const cuisine = foodCuisines[Math.floor(Math.random() * foodCuisines.length)];
-      return `${adjective} ${cuisine}`;
+      
+      // Randomly decide whether to use 1 or 2 adjectives (70% chance for 2, 30% chance for 1)
+      const useTwoAdjectives = Math.random() < 0.7;
+      
+      if (useTwoAdjectives) {
+        return `${firstAdjective} ${secondAdjective} ${cuisine}`;
+      } else {
+        // Randomly choose which adjective to use
+        const useFirst = Math.random() < 0.5;
+        return useFirst ? `${firstAdjective} ${cuisine}` : `${secondAdjective} ${cuisine}`;
+      }
     };
 
     const generateRandomDisplayDress = () => {
-      return dressOptions[Math.floor(Math.random() * dressOptions.length)];
+      const materialAdjective = dressMaterialAdjectives[Math.floor(Math.random() * dressMaterialAdjectives.length)];
+      const styleAdjective = dressStyleAdjectives[Math.floor(Math.random() * dressStyleAdjectives.length)];
+      const dressStyle = dressOptions[Math.floor(Math.random() * dressOptions.length)];
+      
+      // Randomly decide whether to use 1 or 2 adjectives (70% chance for 2, 30% chance for 1)
+      const useTwoAdjectives = Math.random() < 0.7;
+      
+      if (useTwoAdjectives) {
+        return `${materialAdjective} ${styleAdjective} ${dressStyle}`;
+      } else {
+        // Randomly choose which adjective to use
+        const useMaterial = Math.random() < 0.5;
+        return useMaterial ? `${materialAdjective} ${dressStyle}` : `${styleAdjective} ${dressStyle}`;
+      }
     };
 
     const generateRandomDisplayState = () => {
