@@ -5,7 +5,7 @@ import { useState } from 'react';
 import QuizSection from './QuizSection';
 import QuoteBox from './QuoteBox';
 import ProfilePicture from './ProfilePicture';
-import DateSpinner from './DateSpinner';
+import DateGenerator from './DateGenerator';
 
 function ProfileSection() {
   const theme = useTheme();
@@ -179,6 +179,7 @@ function ProfileSection() {
       }}
     >
       <ProfilePicture />
+
       <Typography
         variant="h4"
         sx={{
@@ -211,9 +212,12 @@ function ProfileSection() {
           renderCategory(categoryKey, categoryData)
         )}
       </Box>
+        <Stack spacing={3}>
+
+        <DateGenerator/>
       <QuizSection/>
       <QuoteBox/>
-      <DateSpinner/>
+        </Stack>
     </Box>
   );
 }
