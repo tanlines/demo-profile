@@ -212,7 +212,7 @@ function ProfileSection() {
           renderCategory(categoryKey, categoryData)
         )}
       </Box>
-        <Stack spacing={3} sx={{ alignItems: 'center' }}>
+        <Stack spacing={3} sx={{ alignItems: 'center', width: '100%' }}>
 
         <DateGenerator/>
         <QuizSection/>

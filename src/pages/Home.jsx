@@ -41,7 +41,6 @@ const Home = () => {
     <>
       <ProfileSection />
       <ScrollSections />
-      <QuizSection />
     </>
   );
 };

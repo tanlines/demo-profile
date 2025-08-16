@@ -457,7 +457,6 @@ const DateGenerator = () => {
         sx={{ 
           p: 3, 
           maxWidth: 600, 
-          minWidth: 400,
           mx: 'auto',
           background: `linear-gradient(135deg, ${theme.palette.primary.light}15, ${theme.palette.secondary.light}15)`,
           border: `2px solid ${theme.palette.primary.main}20`
