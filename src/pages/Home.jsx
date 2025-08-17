@@ -2,8 +2,6 @@ import { Box } from '@mui/material';
 
 import React, { useEffect, useRef } from 'react';
 import ProfileSection from '../components/ProfileSection';
-import ScrollSections from '../components/ScrollSections';
-import QuizSection from '../components/QuizSection';
 import useDiscordWebhook from '../hooks/useDiscordWebhook';
 
 const Home = () => {

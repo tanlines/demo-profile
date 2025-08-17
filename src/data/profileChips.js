@@ -95,8 +95,7 @@ export const profileChips = {
       {
         emoji: "🚭",
         text: "Smoking/Drugs",
-        description: "This is a smoking and drug free zone, never tried and don't plan to",
-        image: "/chips/smoke.jpg"
+        description: "This is a smoking and drug free zone, never tried and don't plan to"
       },
       {
         emoji: "⛪",

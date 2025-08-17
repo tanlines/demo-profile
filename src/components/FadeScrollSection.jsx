@@ -3,11 +3,12 @@ import { Box, useTheme } from '@mui/material';
 
 function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fadeOutThreshold = 0.95, color1 = "rgb(151, 23, 215)", color2 = "rgb(204, 9, 172)", sectionNumber = null }) {
   const theme = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(sectionNumber !== 1 ? false : true);
   const [opacity, setOpacity] = useState(sectionNumber !== 1 ? 0 : 1);
   const [transform, setTransform] = useState('translateY(20px)');
   const [gradientAngle, setGradientAngle] = useState(45);
   const [previousSectionsHeight, setPreviousSectionsHeight] = useState(0);
+  const [progress, setProgress] = useState(0);
   const sectionRef = useRef(null);
 
   // Calculate heights of previous scroll sections
@@ -24,7 +25,6 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
           totalHeight += scrollSection.offsetHeight;
         }
       }
-      
       setPreviousSectionsHeight(totalHeight);
     };
 
@@ -70,13 +70,15 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
       // Calculate progress within this section
       const sectionHeightPx = window.innerHeight * 1.5; // 150vh
       const adjustedScrollPosition = sectionNumber !== 1 ? scrollPosition - previousSectionsHeight : scrollPosition;
-      const progress = Math.max(0, Math.min(1, adjustedScrollPosition / sectionHeightPx));
+      const currentProgress = Math.max(0, Math.min(1, adjustedScrollPosition / sectionHeightPx));
+      setProgress(currentProgress);
+      
       // Content is immediately visible when section starts
-      if (progress >= fadeInThreshold && scrollPosition >= previousSectionsHeight
+      if (currentProgress >= fadeInThreshold && scrollPosition >= previousSectionsHeight
       )  {
         // Fade out effect only
-        if (progress > fadeOutThreshold) {
-          const fadeOutProgress = Math.max(0, (1 - progress) / (1 - fadeOutThreshold));
+        if (currentProgress > fadeOutThreshold) {
+          const fadeOutProgress = Math.max(0, (1 - currentProgress) / (1 - fadeOutThreshold));
           setOpacity(fadeOutProgress);
           setTransform(`translateY(${20 - (fadeOutProgress * 20)}px)`);
           if (fadeOutProgress === 0) {
@@ -171,6 +173,33 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
           }}
         >
           {children}
+        </Box>
+        
+        {/* Progress Bar */}
+        <Box
+          sx={{
+            position: 'absolute',
+            opacity: opacity,
+            bottom: 20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '60%',
+            height: '3px',
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            zIndex: 3,
+            borderRadius: '2px'
+          }}
+        >
+          <Box
+            sx={{
+              height: '100%',
+              width: `${Math.max(0, Math.min(100, (progress * 100)))}%`,
+              background: "white",
+              transition: 'width 0.3s ease-out',
+              zIndex: 4,
+              borderRadius: '2px'
+            }}
+          />
         </Box>
       </Box>
     </Box>
