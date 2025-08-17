@@ -6,7 +6,6 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
   const [isVisible, setIsVisible] = useState(sectionNumber !== 1 ? false : true);
   const [opacity, setOpacity] = useState(sectionNumber !== 1 ? 0 : 1);
   const [transform, setTransform] = useState('translateY(20px)');
-  const [gradientAngle, setGradientAngle] = useState(45);
   const [previousSectionsHeight, setPreviousSectionsHeight] = useState(0);
   const [progress, setProgress] = useState(0);
   const sectionRef = useRef(null);
@@ -51,14 +50,7 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
     };
   }, [sectionNumber]);
 
-  // Animate gradient angle over time
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGradientAngle(prev => (prev + 2) % 360);
-    }, 20); // Update every 20ms for faster animation
 
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -148,7 +140,7 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
             left: 0,
             width: '100vw',
             height: '100vh',
-            backgroundImage: `linear-gradient(${gradientAngle}deg, ${color1} 30%, ${color2} 90%)`,
+            backgroundImage: `linear-gradient(45deg, ${color1} 30%, ${color2} 90%)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: opacity,
@@ -191,7 +183,7 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
           sx={{
             position: 'absolute',
             opacity: opacity,
-            bottom: 20,
+            bottom: 40,
             left: '50%',
             transform: 'translateX(-50%)',
             width: '60%',
