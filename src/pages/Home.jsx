@@ -40,7 +40,6 @@ const Home = () => {
   return (
     <>
       <ProfileSection />
-      <ScrollSections />
     </>
   );
 };

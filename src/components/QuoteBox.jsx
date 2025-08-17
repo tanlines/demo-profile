@@ -7,7 +7,11 @@ const quotes = [
   "Money isn't everything but it makes everything else easier",
   "A healthy man wants a thousand things, but a sick man only wants one",
   "If you want to go fast, go alone. If you want to go far, go together.",
-  "With about 100 productive hours a week, every hour is 1% of your life if that same week is repeated over and over"
+  "With about 100 productive hours a week, every hour is 1% of your life if that same week is repeated over and over",
+  "How would you live if you were the last person on earth?",
+  "What would you do if you never had to work again?",
+  "What situation brings out the worst in you?",
+  "Would the way you live have more or less meaning if you were the last person on Earth?"
 ];
 
 const QuoteBox = () => {
@@ -123,7 +127,7 @@ const QuoteBox = () => {
             fontStyle: 'italic'
           }}
         >
-          Click for another quote
+          Click for another quote/random thought
         </Typography>
       </Paper>
     </Box>

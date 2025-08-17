@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, Paper, Button, useTheme } from '@mui/material';
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
-
+import { Stack } from '@mui/material';
   
 const questions = [
   { title: "Winter", emoji: "❄️" },
@@ -136,8 +136,21 @@ const QuizSection = () => {
   }
 
   return (
-    <
-    >
+    <Stack>
+      {/* Quiz Title */}
+      <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <Typography 
+          variant="h4" 
+          sx={{ 
+            color: 'white',
+            fontWeight: 'bold',
+            textShadow: '0 2px 4px rgba(0,0,0,0.7)',
+            mb: 2
+          }}
+        >
+          🧪 Compatibility Quiz
+        </Typography>
+      </Box>
       
       {/* Map over questions array and generate a component for each */}
       {questions.map((question, index) => (
@@ -261,7 +274,7 @@ const QuizSection = () => {
       
 
       
-    </>
+    </Stack>
   );
 };
 
