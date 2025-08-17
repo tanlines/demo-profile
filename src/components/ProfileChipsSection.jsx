@@ -167,24 +167,36 @@ function ProfileChipsSection({ selectedCategory = null }) {
     : profileChips;
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      {!selectedChip && (
-        <Typography
-          variant="body1"
-          sx={{
-            mb: 5,
-            color: 'rgba(255, 255, 255, 0.8)',
-            textAlign: 'center',
-            maxWidth: 500,
-            fontStyle: 'italic',
-            textShadow: '0 1px 2px rgba(0,0,0,0.5)'
-          }}
-        >
-          💡 Click on any chip below to learn more about me
-        </Typography>
-      )}
+    <Box sx={{ 
+      width: '100%', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      minHeight: '100vh',
+      pt: 15
+    }}>
+      <Typography
+        variant="body1"
+        sx={{
+          mb: 3,
+          color: 'rgba(255, 255, 255, 0.8)',
+          textAlign: 'center',
+          maxWidth: 500,
+          fontStyle: 'italic',
+          textShadow: '0 1px 2px rgba(0,0,0,0.5)'
+        }}
+      >
+        💡 Click on any chip below to learn more about me
+      </Typography>
       
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ 
+        width: '100%', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+      }}>
         {Object.entries(categoriesToRender).map(([categoryKey, categoryData]) => 
           renderCategory(categoryKey, categoryData)
         )}
