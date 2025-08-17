@@ -488,7 +488,7 @@ const DateGenerator = () => {
                 elevation={1} 
                 sx={{ 
                   p: 1.5, 
-                  minHeight: 50,
+                  minHeight: 100,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -536,7 +536,7 @@ const DateGenerator = () => {
                 elevation={1} 
                 sx={{ 
                   p: 1.5, 
-                  minHeight: 50,
+                  minHeight: 100,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -587,7 +587,7 @@ const DateGenerator = () => {
                 elevation={1} 
                 sx={{ 
                   p: 1.5, 
-                  minHeight: 50,
+                  minHeight: 100,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -635,7 +635,7 @@ const DateGenerator = () => {
                 elevation={1} 
                 sx={{ 
                   p: 1.5, 
-                  minHeight: 50,
+                  minHeight: 100,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -685,7 +685,8 @@ const DateGenerator = () => {
               p: 3, 
               background: `linear-gradient(135deg, ${theme.palette.secondary.light}20, ${theme.palette.primary.light}20)`,
               border: `2px solid ${theme.palette.secondary.main}30`,
-              borderRadius: 3
+              borderRadius: 3,
+              minHeight: 200
             }}
           >
             <Typography 
