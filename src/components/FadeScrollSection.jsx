@@ -61,46 +61,57 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
   }, []);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (!sectionRef.current) return;
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollPosition = window.scrollY;
-      
-      // Calculate progress within this section
-      const sectionHeightPx = window.innerHeight * 1.5; // 150vh
-      const adjustedScrollPosition = sectionNumber !== 1 ? scrollPosition - previousSectionsHeight : scrollPosition;
-      const currentProgress = Math.max(0, Math.min(1, adjustedScrollPosition / sectionHeightPx));
-      setProgress(currentProgress);
-      
-      // Content is immediately visible when section starts
-      if (currentProgress >= fadeInThreshold && scrollPosition >= previousSectionsHeight
-      )  {
-        // Fade out effect only
-        if (currentProgress > fadeOutThreshold) {
-          const fadeOutProgress = Math.max(0, (1 - currentProgress) / (1 - fadeOutThreshold));
-          setOpacity(fadeOutProgress);
-          setTransform(`translateY(${20 - (fadeOutProgress * 20)}px)`);
-          if (fadeOutProgress === 0) {
+          const scrollPosition = window.scrollY;
+          
+          // Calculate progress within this section
+          const sectionHeightPx = window.innerHeight * 1.5; // 150vh
+          const adjustedScrollPosition = sectionNumber !== 1 ? scrollPosition - previousSectionsHeight : scrollPosition;
+          const currentProgress = Math.max(0, Math.min(1, adjustedScrollPosition / sectionHeightPx));
+          
+          // Only update if progress changed significantly (reduce unnecessary re-renders)
+          if (Math.abs(currentProgress - progress) > 0.02) {
+            setProgress(currentProgress);
+          }
+          
+          // Content is immediately visible when section starts
+          if (currentProgress >= fadeInThreshold && scrollPosition >= previousSectionsHeight) {
+            // Fade out effect only
+            if (currentProgress > fadeOutThreshold) {
+              const fadeOutProgress = Math.max(0, (1 - currentProgress) / (1 - fadeOutThreshold));
+              setOpacity(fadeOutProgress);
+              setTransform(`translateY(${20 - (fadeOutProgress * 20)}px)`);
+              if (fadeOutProgress === 0) {
+                setIsVisible(false);
+              }
+            } else {
+              // Keep content fully visible
+              setOpacity(1);
+              setTransform('translateY(0px)');
+              setIsVisible(true);
+            }
+          } else {
+            // Before section starts, content is hidden
+            setOpacity(0);
+            setTransform('translateY(20px)');
             setIsVisible(false);
           }
-        } else {
-          // Keep content fully visible
-          setOpacity(1);
-          setTransform('translateY(0px)');
-          setIsVisible(true);
-        }
-      } else {
-        // Before section starts, content is hidden
-        setOpacity(0);
-        setTransform('translateY(20px)');
-        setIsVisible(false);
+          
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [fadeInThreshold, fadeOutThreshold, previousSectionsHeight]);
+  }, [fadeInThreshold, fadeOutThreshold, previousSectionsHeight, progress]);
 
   return (
     <Box sx={{ position: 'relative' }} {...{ [`data-scroll-section-${sectionNumber}`]: true }}>
@@ -195,6 +206,7 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
               height: '100%',
               width: `${Math.max(0, Math.min(100, (progress * 120)))}%`,
               background: "white",
+              transition: 'width 0.3s ease-out',
               zIndex: 4,
               borderRadius: '2px'
             }}
