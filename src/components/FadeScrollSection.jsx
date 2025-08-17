@@ -193,9 +193,8 @@ function FadeScrollSection({ children, height = '100vh', fadeInThreshold = 0, fa
           <Box
             sx={{
               height: '100%',
-              width: `${Math.max(0, Math.min(100, (progress * 100)))}%`,
+              width: `${Math.max(0, Math.min(100, (progress * 120)))}%`,
               background: "white",
-              transition: 'width 0.3s ease-out',
               zIndex: 4,
               borderRadius: '2px'
             }}
