@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useDiscordWebhook = (webhookUrl = 'https://discord.com/api/webhooks/1403719689456320603/QtPOgoai6d1jafWzBmSlyOr_mUeU1MrIdmr7VHpyWtUKeqeLSilXtq7VXofq-S9iUmfP') => {
+const useDiscordWebhook = (webhookUrl = 'https://discord.com/api/webhooks/1406512839002161182/KMRT2gd26ilKAzgctiLNs3cehkG6IV62GBaMw_NbORivT4hpe64MMblI9WxNRad8VX7u') => {
   const [sending, setSending] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
   const [error, setError] = useState(null);

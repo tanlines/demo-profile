@@ -7,6 +7,7 @@ import FadeScrollSection from './FadeScrollSection';
 import ProfileChipsSection from './ProfileChipsSection';
 import WhyWebsiteSection from './WhyWebsiteSection';
 import ContactSection from './ContactSection';
+import VariableWordFlow from "./VariableWordFlow";
 // Profile Header Section Component
 function ProfileHeaderSection() {
   const theme = useTheme();
@@ -48,8 +49,7 @@ function ProfileHeaderSection() {
             }
           }}
         >
-          Dating apps put us in a box. <br/>
-          I'd rather make my own box.
+          Hello World!
         </Typography>
         
         <Typography
@@ -65,7 +65,7 @@ function ProfileHeaderSection() {
             px: { xs: 2, sm: 3, md: 0 }
           }}
         >
-          This is me without swipes, filters, or word limits
+          Scroll for more stuff
         </Typography>
       </Stack>
   );
@@ -97,64 +97,33 @@ function ProfileSection() {
     <FadeScrollSection sectionNumber={1} color1="rgb(151, 23, 215)" color2="rgb(204, 9, 172)">
       <ProfileHeaderSection />
     </FadeScrollSection>
+    
+      <FadeScrollSection sectionNumber={2}
+       color1="rgb(0, 0, 0)" color2="rgb(103, 103, 103)"
+      >
+          <VariableWordFlow
+              text="are you upset with me did I do something wrong I just want to know we’re okay I feel like you’re pulling away can you please just tell me what you’re thinking I hate when I don’t hear from you I keep checking my phone I don’t want to bother you but I need to feel close to you I know I can be too much I just want to feel reassured I’m scared you’ll leave I don’t know if you still want me I feel like I’m not enough I don’t want to lose you I just need to know you still careare you mad at me did I say something wrong I feel like you are far away I just want to be close to you I keep thinking you might leave me I need to know we are okay I feel anxious when you do not reply I wonder if you still care about me I do not know what you are feeling I wish you would talk to me I feel like I am not important to you I am scared you will lose interest I just want to feel safe with you I cannot stop worrying about us I feel like I am chasing you I do not know where I stand with you I keep overthinking everything you say I just want some reassurance from you"
+              minFontRem={0.6}
+              maxFontRem={3.0}
+              packedUnitPx={1}   // 1 = tightest packing
+              packedXGapPx={0}
+              packedYGapPx={0}
+          />
+      </FadeScrollSection>
       
       {/* Profile Chips Section */}
-      <FadeScrollSection sectionNumber={2}
+      {/* <FadeScrollSection sectionNumber={3}
         color1="rgb(24, 190, 223)"
         color2="rgb(26, 83, 225)"
       >
         <ProfileChipsSection selectedCategory={"interests"}/>
-      </FadeScrollSection>
-      
-      <FadeScrollSection sectionNumber={3}
-        color1="rgb(233, 0, 0)"
-        color2="rgb(194, 119, 7)"
-      >
-        <DateGenerator/>
-      </FadeScrollSection>
-      
-      <FadeScrollSection sectionNumber={4}
-        color1="rgb(24, 190, 223)"
-        color2="rgb(26, 83, 225)"
-      >
-        <ProfileChipsSection selectedCategory={"lookingFor"}/>
-      </FadeScrollSection>
-      
-      <FadeScrollSection sectionNumber={5}
-        color1="rgb(0, 207, 28)"
-        color2="rgb(203, 200, 0)"
-      >
-        <QuizSection/>
-      </FadeScrollSection>
-      
-      
-      <FadeScrollSection sectionNumber={6}
-        color1="rgb(207, 21, 0)"
-        color2="rgb(203, 200, 0)"
-      >
-        <ProfileChipsSection selectedCategory={"otherInfo"}/>
-      </FadeScrollSection>
-      
-      <FadeScrollSection sectionNumber={7}
-        color1="rgb(0, 97, 207)"
-        color2="rgb(108, 0, 203)"
-      >
-        <QuoteBox/>
-      </FadeScrollSection>
-      
-      <FadeScrollSection sectionNumber={8}
-        color1="rgb(0, 229, 225)"
-        color2="rgb(0, 189, 19)"
-      >
-        <WhyWebsiteSection/>
-      </FadeScrollSection>
-      
-      <FadeScrollSection sectionNumber={9}
+      </FadeScrollSection> */}
+      {/* <FadeScrollSection sectionNumber={9}
         color1="rgb(193, 0, 0)"
         color2="rgb(203, 0, 132)"
       >
         <ContactSection/>
-      </FadeScrollSection>
+      </FadeScrollSection> */}
     </Box>
   );
 }

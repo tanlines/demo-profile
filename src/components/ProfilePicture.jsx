@@ -10,10 +10,7 @@ function ProfilePicture() {
   
   const avatarImages = [
     '/avatar/avatar0.jpg',
-    '/avatar/avatar1.jpg',
-    '/avatar/avatar2.jpg',
-    '/avatar/avatar3.jpg',
-    '/avatar/avatar4.jpg'
+    '/avatar/avatar1.jpg'
   ];
 
   const totalAvatars = avatarImages.length;
