@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 
 import React, { useEffect, useRef } from 'react';
-import ProfileSection from '../components/ProfileSection';
+import DatingProfile from '../components/DatingProfile';
 import useDiscordWebhook from '../hooks/useDiscordWebhook';
 
 const Home = () => {
@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <>
-      <ProfileSection />
+      <DatingProfile />
     </>
   );
 };
