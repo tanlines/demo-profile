@@ -3,6 +3,17 @@ import { Box, Typography, Modal, Card, CardMedia, CardContent, List, ListItem, L
 import { Close as CloseIcon, SwapHoriz as SubstituteIcon } from '@mui/icons-material';
 import { recipes } from '../../data/recipes';
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/grid';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Grid, Pagination } from 'swiper/modules';
+
 function Recipes({ active = false }) {
   const theme = useTheme();
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -72,67 +83,66 @@ function Recipes({ active = false }) {
         transition: 'opacity 0.3s ease'
       }}
     >
-      <Typography
-        variant="h3"
-        sx={{
-          color: theme.palette.mode === 'dark' ? 'white' : 'black',
-          mb: 4,
-          textAlign: 'center',
-          fontWeight: 'bold'
-        }}
-      >
-        My Recipes
-      </Typography>
-
       <Box
         sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' },
-          gap: 2,
-          maxWidth: '90vw',
-          width: '100%'
-        }}
+          width: '100%'}}
       >
-        {recipes.map((recipe, index) => (
-          <Card
-            key={index}
-            sx={{
-              cursor: 'pointer',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              '&:hover': {
-                transform: 'scale(1.05)',
-                boxShadow: theme.palette.mode === 'dark' 
-                  ? '0 8px 32px rgba(255, 255, 255, 0.1)' 
-                  : '0 8px 32px rgba(0, 0, 0, 0.2)'
-              }
-            }}
-            onClick={() => handleImageClick(recipe)}
-          >
-            <CardMedia
-              component="img"
-              height={{ xs: '150', sm: '200' }}
-              image={recipe.image}
-              alt={recipe.title}
-              sx={{
-                objectFit: 'cover'
-              }}
-            />
-            <CardContent>
-              <Typography
-                variant="h6"
-                component="div"
+        <Swiper
+          style={{ height: '100vh' }}
+          slidesPerView={2}
+          grid={{
+            rows: 3
+          }}
+          spaceBetween={16}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Grid, Pagination]}
+        >
+          {recipes.map((recipe, index) => (
+            <SwiperSlide key={index}>
+              <Card
                 sx={{
-                  textAlign: 'center',
-                  fontWeight: 'bold',
-                  color: theme.palette.mode === 'dark' ? 'white' : 'black',
-                  fontSize: { xs: '0.9rem', sm: '1.25rem' }
+                  width: '100%',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  height: '100%',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: theme.palette.mode === 'dark' 
+                      ? '0 8px 32px rgba(255, 255, 255, 0.1)' 
+                      : '0 8px 32px rgba(0, 0, 0, 0.2)'
+                  }
                 }}
+                onClick={() => handleImageClick(recipe)}
               >
-                {recipe.title}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
+                <CardMedia
+                  component="img"
+                  height={{ xs: '150', sm: '200' }}
+                  image={recipe.image}
+                  alt={recipe.title}
+                  sx={{
+                    objectFit: 'cover'
+                  }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      textAlign: 'center',
+                      fontWeight: 'bold',
+                      color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                      fontSize: { xs: '0.9rem', sm: '1.25rem' }
+                    }}
+                  >
+                    {recipe.title}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Box>
 
       {/* Recipe Details Modal */}

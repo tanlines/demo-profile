@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-
+import GridSwiper from '../components/sections/GridSwiper';
 import React, { useEffect, useRef } from 'react';
 import DatingProfile from '../components/DatingProfile';
 import useDiscordWebhook from '../hooks/useDiscordWebhook';
