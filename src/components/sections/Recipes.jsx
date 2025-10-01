@@ -14,21 +14,61 @@ import 'swiper/css/pagination';
 // import required modules
 import { Grid, Pagination } from 'swiper/modules';
 
-function Recipes({ active = false }) {
+// RecipeCard Component
+function RecipeCard({ recipe, onImageClick }) {
   const theme = useTheme();
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+
+  return (
+    <Card
+      sx={{
+        width: '100%',
+        cursor: 'pointer',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        height: '100%',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          boxShadow: theme.palette.mode === 'dark' 
+            ? '0 8px 32px rgba(255, 255, 255, 0.1)' 
+            : '0 8px 32px rgba(0, 0, 0, 0.2)'
+        }
+      }}
+      onClick={() => onImageClick(recipe)}
+    >
+      <CardMedia
+        component="img"
+        height={{ xs: '150', sm: '200' }}
+        image={recipe.image}
+        alt={recipe.title}
+        sx={{
+          objectFit: 'cover'
+        }}
+      />
+      <CardContent>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{
+            textAlign: 'center',
+            fontWeight: 'bold',
+            color: theme.palette.mode === 'dark' ? 'white' : 'black',
+            fontSize: { xs: '0.9rem', sm: '1.25rem' }
+          }}
+        >
+          {recipe.title}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+}
+
+// RecipeModal Component
+function RecipeModal({ open, onClose, selectedRecipe }) {
+  const theme = useTheme();
   const [servings, setServings] = useState(4);
   const [expandedSubstitutes, setExpandedSubstitutes] = useState(new Set());
 
-  const handleImageClick = (recipe) => {
-    setSelectedRecipe(recipe);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setSelectedRecipe(null);
+  const handleClose = () => {
+    onClose();
     setServings(4);
     setExpandedSubstitutes(new Set());
   };
@@ -70,6 +110,210 @@ function Recipes({ active = false }) {
   };
 
   return (
+    <Modal
+      open={open}
+      onClose={handleClose}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2
+      }}
+    >
+      <Box
+        sx={{
+          position: 'relative',
+          width: { xs: '95%', sm: '80%', md: '600px' },
+          maxHeight: '90vh',
+          bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'white',
+          borderRadius: 2,
+          boxShadow: 24,
+          overflow: 'auto',
+          outline: 'none'
+        }}
+      >
+        <IconButton
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            zIndex: 1,
+            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+            '&:hover': {
+              bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
+            }
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
+        {selectedRecipe && (
+          <Box sx={{ p: 3 }}>
+            <Typography
+              variant="h4"
+              sx={{
+                mb: 1,
+                textAlign: 'center',
+                fontWeight: 'bold',
+                color: theme.palette.mode === 'dark' ? 'white' : 'black'
+              }}
+            >
+              {selectedRecipe.title}
+            </Typography>
+            
+
+            <Box
+              component="img"
+              src={selectedRecipe.image}
+              alt={selectedRecipe.title}
+              sx={{
+                width: '100%',
+                height: '300px',
+                objectFit: 'cover',
+                borderRadius: 1,
+                mb: 3
+              }}
+            />
+
+            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 'bold',
+                  color: theme.palette.mode === 'dark' ? 'white' : 'black'
+                }}
+              >
+                Ingredients:
+              </Typography>
+              <FormControl size="small" sx={{ minWidth: 80 }}>
+                <Select
+                  value={servings}
+                  onChange={(e) => setServings(e.target.value)}
+                  sx={{
+                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)'
+                    },
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                      borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)'
+                    },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                      borderColor: theme.palette.primary.main
+                    }
+                  }}
+                >
+                  {[1, 2, 3, 4, 5, 6].map((num) => (
+                    <MenuItem key={num} value={num}>
+                      {num}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <List dense>
+              {selectedRecipe.ingredients.map((ingredient, index) => (
+                <Box key={index}>
+                  <ListItem sx={{ py: 0.5, alignItems: 'flex-start' }}>
+                    <ListItemText
+                      primary={
+                        typeof ingredient === 'string' 
+                          ? ingredient 
+                          : typeof ingredient.amount === 'string'
+                            ? `${ingredient.amount} ${ingredient.item}`
+                            : `${getScaledAmount(ingredient)} ${ingredient.item}`
+                      }
+                      sx={{
+                        '& .MuiListItemText-primary': {
+                          fontSize: '0.95rem',
+                          color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)'
+                        }
+                      }}
+                    />
+                    {ingredient.substitute && (
+                      <IconButton
+                        size="small"
+                        onClick={() => toggleSubstitute(index)}
+                        sx={{
+                          ml: 1,
+                          color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
+                          '&:hover': {
+                            color: theme.palette.primary.main
+                          }
+                        }}
+                      >
+                        <SubstituteIcon fontSize="small" />
+                      </IconButton>
+                    )}
+                  </ListItem>
+                  {ingredient.substitute && expandedSubstitutes.has(index) && (
+                    <Box sx={{ pl: 2, pb: 1 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontSize: '0.85rem',
+                          color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
+                          fontStyle: 'italic',
+                          pl: 2,
+                          borderLeft: `2px solid ${theme.palette.primary.main}40`
+                        }}
+                      >
+                        Substitute: {ingredient.substitute}
+                      </Typography>
+                    </Box>
+                  )}
+                </Box>
+              ))}
+            </List>
+
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 2,
+                mt: 3,
+                fontWeight: 'bold',
+                color: theme.palette.mode === 'dark' ? 'white' : 'black'
+              }}
+            >
+              Instructions:
+            </Typography>
+            <List dense>
+              {selectedRecipe.instructions.map((instruction, index) => (
+                <ListItem key={index} sx={{ py: 0.5, alignItems: 'flex-start' }}>
+                  <ListItemText
+                    primary={`${index + 1}. ${instruction}`}
+                    sx={{
+                      '& .MuiListItemText-primary': {
+                        fontSize: '0.95rem',
+                        color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)'
+                      }
+                    }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        )}
+      </Box>
+    </Modal>
+  );
+}
+
+function Recipes({ active = false }) {
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleImageClick = (recipe) => {
+    setSelectedRecipe(recipe);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedRecipe(null);
+  };
+
+  return (
     <Box
       sx={{
         width: '100%',
@@ -83,10 +327,7 @@ function Recipes({ active = false }) {
         transition: 'opacity 0.3s ease'
       }}
     >
-      <Box
-        sx={{
-          width: '100%'}}
-      >
+      <Box sx={{ width: '100%' }}>
         <Swiper
           style={{ height: '100vh' }}
           slidesPerView={2}
@@ -101,237 +342,20 @@ function Recipes({ active = false }) {
         >
           {recipes.map((recipe, index) => (
             <SwiperSlide key={index}>
-              <Card
-                sx={{
-                  width: '100%',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  height: '100%',
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                    boxShadow: theme.palette.mode === 'dark' 
-                      ? '0 8px 32px rgba(255, 255, 255, 0.1)' 
-                      : '0 8px 32px rgba(0, 0, 0, 0.2)'
-                  }
-                }}
-                onClick={() => handleImageClick(recipe)}
-              >
-                <CardMedia
-                  component="img"
-                  height={{ xs: '150', sm: '200' }}
-                  image={recipe.image}
-                  alt={recipe.title}
-                  sx={{
-                    objectFit: 'cover'
-                  }}
-                />
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{
-                      textAlign: 'center',
-                      fontWeight: 'bold',
-                      color: theme.palette.mode === 'dark' ? 'white' : 'black',
-                      fontSize: { xs: '0.9rem', sm: '1.25rem' }
-                    }}
-                  >
-                    {recipe.title}
-                  </Typography>
-                </CardContent>
-              </Card>
+              <RecipeCard 
+                recipe={recipe} 
+                onImageClick={handleImageClick} 
+              />
             </SwiperSlide>
           ))}
         </Swiper>
       </Box>
 
-      {/* Recipe Details Modal */}
-      <Modal
+      <RecipeModal
         open={modalOpen}
         onClose={handleCloseModal}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          p: 2
-        }}
-      >
-        <Box
-          sx={{
-            position: 'relative',
-            width: { xs: '95%', sm: '80%', md: '600px' },
-            maxHeight: '90vh',
-            bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'white',
-            borderRadius: 2,
-            boxShadow: 24,
-            overflow: 'auto',
-            outline: 'none'
-          }}
-        >
-          <IconButton
-            onClick={handleCloseModal}
-            sx={{
-              position: 'absolute',
-              top: 8,
-              right: 8,
-              zIndex: 1,
-              bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-              '&:hover': {
-                bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
-              }
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-
-          {selectedRecipe && (
-            <Box sx={{ p: 3 }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  mb: 1,
-                  textAlign: 'center',
-                  fontWeight: 'bold',
-                  color: theme.palette.mode === 'dark' ? 'white' : 'black'
-                }}
-              >
-                {selectedRecipe.title}
-              </Typography>
-              
-
-              <Box
-                component="img"
-                src={selectedRecipe.image}
-                alt={selectedRecipe.title}
-                sx={{
-                  width: '100%',
-                  height: '300px',
-                  objectFit: 'cover',
-                  borderRadius: 1,
-                  mb: 3
-                }}
-              />
-
-              <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 'bold',
-                    color: theme.palette.mode === 'dark' ? 'white' : 'black'
-                  }}
-                >
-                  Ingredients:
-                </Typography>
-                <FormControl size="small" sx={{ minWidth: 80 }}>
-                  <Select
-                    value={servings}
-                    onChange={(e) => setServings(e.target.value)}
-                    sx={{
-                      color: theme.palette.mode === 'dark' ? 'white' : 'black',
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)'
-                      },
-                      '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)'
-                      },
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: theme.palette.primary.main
-                      }
-                    }}
-                  >
-                    {[1, 2, 3, 4, 5, 6].map((num) => (
-                      <MenuItem key={num} value={num}>
-                        {num}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Box>
-              <List dense>
-                {selectedRecipe.ingredients.map((ingredient, index) => (
-                  <Box key={index}>
-                    <ListItem sx={{ py: 0.5, alignItems: 'flex-start' }}>
-                      <ListItemText
-                        primary={
-                          typeof ingredient === 'string' 
-                            ? ingredient 
-                            : typeof ingredient.amount === 'string'
-                              ? `${ingredient.amount} ${ingredient.item}`
-                              : `${getScaledAmount(ingredient)} ${ingredient.item}`
-                        }
-                        sx={{
-                          '& .MuiListItemText-primary': {
-                            fontSize: '0.95rem',
-                            color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)'
-                          }
-                        }}
-                      />
-                      {ingredient.substitute && (
-                        <IconButton
-                          size="small"
-                          onClick={() => toggleSubstitute(index)}
-                          sx={{
-                            ml: 1,
-                            color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
-                            '&:hover': {
-                              color: theme.palette.primary.main
-                            }
-                          }}
-                        >
-                          <SubstituteIcon fontSize="small" />
-                        </IconButton>
-                      )}
-                    </ListItem>
-                    {ingredient.substitute && expandedSubstitutes.has(index) && (
-                      <Box sx={{ pl: 2, pb: 1 }}>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontSize: '0.85rem',
-                            color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
-                            fontStyle: 'italic',
-                            pl: 2,
-                            borderLeft: `2px solid ${theme.palette.primary.main}40`
-                          }}
-                        >
-                          Substitute: {ingredient.substitute}
-                        </Typography>
-                      </Box>
-                    )}
-                  </Box>
-                ))}
-              </List>
-
-              <Typography
-                variant="h6"
-                sx={{
-                  mb: 2,
-                  mt: 3,
-                  fontWeight: 'bold',
-                  color: theme.palette.mode === 'dark' ? 'white' : 'black'
-                }}
-              >
-                Instructions:
-              </Typography>
-              <List dense>
-                {selectedRecipe.instructions.map((instruction, index) => (
-                  <ListItem key={index} sx={{ py: 0.5, alignItems: 'flex-start' }}>
-                    <ListItemText
-                      primary={`${index + 1}. ${instruction}`}
-                      sx={{
-                        '& .MuiListItemText-primary': {
-                          fontSize: '0.95rem',
-                          color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)'
-                        }
-                      }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          )}
-        </Box>
-      </Modal>
+        selectedRecipe={selectedRecipe}
+      />
     </Box>
   );
 }
