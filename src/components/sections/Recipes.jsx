@@ -344,13 +344,14 @@ function LinkMenu({query}) {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
+    event.stopPropagation();
     setAnchorEl(null);
   };
 
-  const handleItemClick = (href) => {
+  const handleItemClick = (event, href) => {
     window.open(href, '_blank', 'noopener,noreferrer');
-    handleClose();
+    handleClose(event);
   };
 
   return (
@@ -376,7 +377,7 @@ function LinkMenu({query}) {
         {links.map((l) => {
           const href = `${l.link}${encodeURI(query || '')}`;
           return (
-            <MenuItem key={l.title} onClick={() => handleItemClick(href)}>
+            <MenuItem key={l.title} onClick={(event) => handleItemClick(event, href)}>
               {l.title}
             </MenuItem>
           );
