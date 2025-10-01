@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Typography, Modal, Card, CardMedia, CardContent, List, ListItem, ListItemText, IconButton, useTheme, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import { Close as CloseIcon, SwapHoriz as SubstituteIcon } from '@mui/icons-material';
+import { Box, Typography, Modal, Card, CardMedia, CardContent, List, ListItem, ListItemText, IconButton, useTheme, Select, MenuItem, FormControl, InputLabel, Menu } from '@mui/material';
+import { Close as CloseIcon, SwapHoriz as SubstituteIcon, MoreVert as MenuIcon } from '@mui/icons-material';
 import { recipes } from '../../data/recipes';
 
 // Import Swiper React components
@@ -66,11 +66,13 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
   const theme = useTheme();
   const [servings, setServings] = useState(4);
   const [expandedSubstitutes, setExpandedSubstitutes] = useState(new Set());
+  const [checkedIngredients, setCheckedIngredients] = useState(new Set());
 
   const handleClose = () => {
     onClose();
     setServings(4);
     setExpandedSubstitutes(new Set());
+    setCheckedIngredients(new Set());
   };
 
   const toggleSubstitute = (index) => {
@@ -107,6 +109,16 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
     const roundedValue = roundToSensible(scaledValue);
     
     return `${roundedValue}${ingredient.amount.unit ? ' ' + ingredient.amount.unit : ''}`;
+  };
+
+  const toggleChecked = (index) => {
+    const next = new Set(checkedIngredients);
+    if (next.has(index)) {
+      next.delete(index);
+    } else {
+      next.add(index);
+    }
+    setCheckedIngredients(next);
   };
 
   return (
@@ -214,7 +226,15 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
             <List dense>
               {selectedRecipe.ingredients.map((ingredient, index) => (
                 <Box key={index}>
-                  <ListItem sx={{ py: 0.5, alignItems: 'flex-start' }}>
+                  <ListItem 
+                    onClick={() => toggleChecked(index)}
+                    sx={{ 
+                      py: 0.5, 
+                      alignItems: 'flex-start', 
+                      cursor: 'pointer', 
+                      userSelect: 'none' 
+                    }}
+                  >
                     <ListItemText
                       primary={
                         typeof ingredient === 'string' 
@@ -226,14 +246,16 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
                       sx={{
                         '& .MuiListItemText-primary': {
                           fontSize: '0.95rem',
-                          color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)'
+                          color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)',
+                          textDecoration: checkedIngredients.has(index) ? 'line-through' : 'none',
+                          opacity: checkedIngredients.has(index) ? 0.6 : 1
                         }
                       }}
                     />
                     {ingredient.substitute && (
                       <IconButton
                         size="small"
-                        onClick={() => toggleSubstitute(index)}
+                        onClick={(e) => { e.stopPropagation(); toggleSubstitute(index); }}
                         sx={{
                           ml: 1,
                           color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
@@ -245,6 +267,9 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
                         <SubstituteIcon fontSize="small" />
                       </IconButton>
                     )}
+                    <Box sx={{ ml: 0.5 }}>
+                      <LinkMenu query={ingredient.item} />
+                    </Box>
                   </ListItem>
                   {ingredient.substitute && expandedSubstitutes.has(index) && (
                     <Box sx={{ pl: 2, pb: 1 }}>
@@ -296,6 +321,68 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
         )}
       </Box>
     </Modal>
+  );
+}
+
+function LinkMenu({query}) {
+  const links = [
+    {
+      link: "https://www.coles.com.au/search/products?q=",
+      title: "Coles"
+    },
+    {
+      link: "https://www.woolworths.com.au/shop/search/products?searchTerm=",
+      title: "Woolworths"
+    },
+  ];
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleOpen = (event) => {
+    // Prevent parent ListItem click handlers from firing
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleItemClick = (href) => {
+    window.open(href, '_blank', 'noopener,noreferrer');
+    handleClose();
+  };
+
+  return (
+    <Box>
+      <IconButton
+        aria-label="open links menu"
+        aria-controls={open ? 'links-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleOpen}
+        size="small"
+      >
+        <MenuIcon />
+      </IconButton>
+      <Menu
+        id="links-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        {links.map((l) => {
+          const href = `${l.link}${encodeURI(query || '')}`;
+          return (
+            <MenuItem key={l.title} onClick={() => handleItemClick(href)}>
+              {l.title}
+            </MenuItem>
+          );
+        })}
+      </Menu>
+    </Box>
   );
 }
 

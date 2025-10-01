@@ -14,14 +14,14 @@ export const recipes = [
     title: "Japchae",
     ingredients: [
         { amount: { value: 100, unit: "g" }, item: "thin sweet potato noodles", substitute: "rice noodles or glass noodles" },
-        { amount: { value: 75, unit: "g" }, item: "beef or chicken, thinly sliced", substitute: "tofu or mushrooms for vegetarian" },
+        { amount: { value: 75, unit: "g" }, item: "beef thinly sliced", substitute: "chicken, tofu or mushrooms for vegetarian" },
         { amount: { value: 0.5, unit: "medium" }, item: "carrots, cut into matchsticks" },
         { amount: { value: 1.5, unit: "" }, item: "shiitake mushrooms, sliced", substitute: "button mushrooms or oyster mushrooms" },
         { amount: { value: 25, unit: "g" }, item: "baby spinach" },
         { amount: { value: 1.5, unit: "" }, item: "green onions, sliced" },
         { amount: { value: 2, unit: "tbsp" }, item: "soy sauce" },
         { amount: { value: 1, unit: "tbsp" }, item: "sesame oil" },
-        { amount: { value: 0.5, unit: "tbsp" }, item: "sugar" }
+        { amount: { value: 0.5, unit: "tbsp" }, item: "oyster sauce" },
     ],
     instructions: [
         "Soak mushrooms in warm water until soft",
