@@ -19,12 +19,22 @@ function RecipeCard({ recipe, onImageClick }) {
   const theme = useTheme();
 
   return (
-    <Card
+    <Box
       sx={{
         width: '100%',
+        height: '100%',
+        minHeight: { xs: '200px', sm: '250px' },
         cursor: 'pointer',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-        height: '100%',
+        backgroundImage: `url(${recipe.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        borderRadius: 2,
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         '&:hover': {
           transform: 'scale(1.05)',
           boxShadow: theme.palette.mode === 'dark' 
@@ -34,30 +44,35 @@ function RecipeCard({ recipe, onImageClick }) {
       }}
       onClick={() => onImageClick(recipe)}
     >
-      <CardMedia
-        component="img"
-        height={{ xs: '150', sm: '200' }}
-        image={recipe.image}
-        alt={recipe.title}
+      {/* Dark overlay for better text readability */}
+      <Box
         sx={{
-          objectFit: 'cover'
+          bottom: 0,
+          left: 0,
+          right: 0,
+          p: 2
         }}
-      />
-      <CardContent>
+      >
         <Typography
-          variant="h6"
+          variant="h4"
           component="div"
           sx={{
             textAlign: 'center',
-            fontWeight: 'bold',
-            color: theme.palette.mode === 'dark' ? 'white' : 'black',
-            fontSize: { xs: '0.9rem', sm: '1.25rem' }
+            fontWeight: 900,
+            fontFamily: '"Roboto Black", "Arial Black", "Helvetica Neue", Arial, sans-serif',
+            color: 'white',
+            fontSize: { xs: '1.35rem', sm: '1.875rem' },
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.8)',
+            WebkitTextStroke: '2px black',
+            textStroke: '2px black',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase'
           }}
         >
           {recipe.title}
         </Typography>
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 }
 
@@ -405,6 +420,7 @@ function Recipes({ active = false }) {
     <Box
       sx={{
         width: '100%',
+        maxWidth: '800px',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
