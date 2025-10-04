@@ -14,7 +14,7 @@ export const recipes = [
     title: "Japchae",
     ingredients: [
         { amount: { value: 100, unit: "g" }, item: "thin sweet potato noodles", substitute: "rice noodles or glass noodles" },
-        { amount: { value: 75, unit: "g" }, item: "beef diced", substitute: "chicken, tofu or mushrooms for vegetarian" },
+        { amount: { value: 75, unit: "g" }, item: "beef", substitute: "chicken, tofu or mushrooms for vegetarian" },
         { amount: { value: 0.5, unit: "medium" }, item: "carrot matchsticks" },
         { amount: { value: 1.5, unit: "" }, item: "shiitake mushrooms", substitute: "button mushrooms or oyster mushrooms" },
         { amount: { value: 25, unit: "g" }, item: "baby spinach" },
@@ -36,7 +36,7 @@ export const recipes = [
   {
     title: "Fungus Chicken",
     ingredients: [
-        { amount: { value: 200, unit: "g" }, item: "chicken pieces ~3cm squares", substitute: "pork or beef pieces" },
+        { amount: { value: 200, unit: "g" }, item: "chicken", substitute: "pork or beef pieces" },
         { amount: { value: 12.5, unit: "g" }, item: "dried wood ear"},
         { amount: { value: 12.5, unit: "g" }, item: "dried shiitake mushrooms" },
         { amount: { value: 0.5, unit: "tbsp" }, item: "mushroom flavoured soy sauce" }

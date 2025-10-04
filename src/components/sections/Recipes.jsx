@@ -22,6 +22,7 @@ function RecipeCard({ recipe, onImageClick }) {
     <Box
       sx={{
         width: '100%',
+        maxWidth: '300px',
         height: '100%',
         minHeight: { xs: '200px', sm: '250px' },
         cursor: 'pointer',
@@ -62,9 +63,7 @@ function RecipeCard({ recipe, onImageClick }) {
             fontFamily: '"Roboto Black", "Arial Black", "Helvetica Neue", Arial, sans-serif',
             color: 'white',
             fontSize: { xs: '1.35rem', sm: '1.875rem' },
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.8)',
-            WebkitTextStroke: '2px black',
-            textStroke: '2px black',
+            textShadow: '1px 2px 0 rgba(0, 0, 0, 0.8)',
             letterSpacing: '0.05em',
             textTransform: 'uppercase'
           }}
@@ -420,7 +419,6 @@ function Recipes({ active = false }) {
     <Box
       sx={{
         width: '100%',
-        maxWidth: '800px',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -433,7 +431,7 @@ function Recipes({ active = false }) {
     >
       <Box sx={{ width: '100%' }}>
         <Swiper
-          style={{ height: '100vh' }}
+          style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
           slidesPerView={2}
           grid={{
             rows: 3
@@ -445,7 +443,7 @@ function Recipes({ active = false }) {
           modules={[Grid, Pagination]}
         >
           {recipes.map((recipe, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} style={{ maxWidth: '300px' }}>
               <RecipeCard 
                 recipe={recipe} 
                 onImageClick={handleImageClick} 
