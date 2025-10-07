@@ -100,17 +100,17 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
   };
 
   const roundToSensible = (value) => {
-    if (value < 0.25) return 0.25;
-    if (value < 0.5) return 0.5;
-    if (value < 0.75) return 0.75;
-    if (value < 1) return 1;
-    if (value < 1.5) return 1.5;
-    if (value < 2) return 2;
-    if (value < 3) return Math.round(value);
-    if (value < 5) return Math.round(value * 2) / 2;
-    if (value < 10) return Math.round(value);
-    if (value < 50) return Math.round(value / 5) * 5;
-    if (value < 100) return Math.round(value / 10) * 10;
+    if (value <= 0.25) return 0.25;
+    if (value <= 0.5) return 0.5;
+    if (value <= 0.75) return 0.75;
+    if (value <= 1) return 1;
+    if (value <= 1.5) return 1.5;
+    if (value <= 2) return 2;
+    if (value <= 3) return Math.round(value);
+    if (value <= 5) return Math.round(value * 2) / 2;
+    if (value <= 10) return Math.round(value);
+    if (value <= 50) return Math.round(value / 5) * 5;
+    if (value <= 100) return Math.round(value / 10) * 10;
     return Math.round(value / 25) * 25;
   };
 
@@ -236,6 +236,15 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
                   ))}
                 </Select>
               </FormControl>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontWeight: 'bold',
+                  color: theme.palette.mode === 'dark' ? 'white' : 'black'
+                }}
+              >
+                — servings
+              </Typography>
             </Box>
             <List dense>
               {selectedRecipe.ingredients.map((ingredient, index) => (

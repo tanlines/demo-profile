@@ -18,7 +18,9 @@ export const recipes = [
         { amount: { value: 0.5, unit: "medium" }, item: "carrot matchsticks" },
         { amount: { value: 1.5, unit: "" }, item: "shiitake mushrooms", substitute: "button mushrooms or oyster mushrooms" },
         { amount: { value: 25, unit: "g" }, item: "baby spinach" },
-        { amount: { value: 1.5, unit: "" }, item: "green onions" },
+        { amount: { value: 0.25, unit: "" }, item: "onion" },
+        { amount: { value: 0.5, unit: "" }, item: "red capsicum" },
+        { amount: { value: 5, unit: "g" }, item: "sesame seeds" },
         { amount: { value: 2, unit: "tbsp" }, item: "soy sauce" },
         { amount: { value: 1, unit: "tbsp" }, item: "sesame oil" },
         { amount: { value: 0.5, unit: "tbsp" }, item: "oyster sauce" },
@@ -50,6 +52,41 @@ export const recipes = [
       "Add soy sauce to taste",
     ],
     image: "/recipes/funguschicken.webp"
+  },
+  {
+    title: "Warabi mochi",
+    ingredients: [
+        { amount: { value: 12.5, unit: "g" }, item: "tapioca starch" },
+        { amount: { value: 62.5, unit: "ml" }, item: "water" },
+        { amount: { value: 7.5, unit: "g" }, item: "sugar" },
+        { amount: { value: 5, unit: "g" }, item: "kinako (roasted soybean flour)" , substitute: "matcha powder"},
+    ],
+    instructions: [
+        "Mix tapioca starch, water and sugar in a pot over medium heat",
+        "Cook over medium heat until thickened",
+        "Pour into a mold lined with baking paper and cool",
+        "Cut into squares and serve",
+    ],
+    image: "/recipes/warabimochi.webp"
+  },
+  {
+    title: "Almond cookies",
+    ingredients: [
+        { amount: { value: 0.75, unit: "cup" }, item: "plain flour" },
+        { amount: { value: 0.25, unit: "cup" }, item: "olive oil" },
+        { amount: { value: 0.25, unit: "cup" }, item: "icing sugar" },
+        { amount: { value: 25, unit: "g" }, item: "almond meal" },
+        { amount: { value: 0.25, unit: "" }, item: "egg" },
+        { amount: { value: 20, unit: "g" }, item: "almond flakes" },
+    ],
+    instructions: [
+        "Mix flour, almond meal, icing sugar and oil in a bowl",
+        "Roll into small balls",
+        "Add almond flakes on top of each ball",
+        "Brush with whisked egg",
+        "Bake at 150°C for 15-20 minutes",
+    ],
+    image: "/recipes/almondcookies.webp"
   },
   {
     title: "Kung Pao Chicken",
