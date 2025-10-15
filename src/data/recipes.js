@@ -27,8 +27,8 @@ export const recipes = [
     ],
     instructions: [
         "Soak mushrooms in warm water until soft, remove stems and slice",
-        "Slice carrots into matchsticks, slice green onions",
-        "Boil noodles, rinse in cold water, set aside, add sesame oil to prevent sticking",
+        "Slice carrots into matchsticks, slice green onions, capsicum",
+        "Boil noodles, rinse in cold water, set aside, cut into ~15cm lengths, add sesame oil to prevent sticking",
         "Stirfry vegetables, set aside",
         "Stirfry beef, garlic, soy sauce, sesame oil and sugar until brown",
         "Add vegetables, noodles then spinach and mix well",
@@ -77,7 +77,7 @@ export const recipes = [
         { amount: { value: 0.25, unit: "cup" }, item: "icing sugar" },
         { amount: { value: 25, unit: "g" }, item: "almond meal" },
         { amount: { value: 0.25, unit: "" }, item: "egg" },
-        { amount: { value: 20, unit: "g" }, item: "almond flakes" },
+        { amount: { value: 5, unit: "g" }, item: "almond flakes" },
     ],
     instructions: [
         "Mix flour, almond meal, icing sugar and oil in a bowl",

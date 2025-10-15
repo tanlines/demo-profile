@@ -243,7 +243,7 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
                   color: theme.palette.mode === 'dark' ? 'white' : 'black'
                 }}
               >
-                — servings
+                servings
               </Typography>
             </Box>
             <List dense>
