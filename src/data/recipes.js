@@ -56,10 +56,10 @@ export const recipes = [
   {
     title: "Warabi mochi",
     ingredients: [
-        { amount: { value: 12.5, unit: "g" }, item: "tapioca starch" },
-        { amount: { value: 62.5, unit: "ml" }, item: "water" },
-        { amount: { value: 7.5, unit: "g" }, item: "sugar" },
-        { amount: { value: 5, unit: "g" }, item: "kinako (roasted soybean flour)" , substitute: "matcha powder"},
+        { amount: { value: 25, unit: "g" }, item: "tapioca starch" },
+        { amount: { value: 125, unit: "ml" }, item: "water" },
+        { amount: { value: 15, unit: "g" }, item: "sugar" },
+        { amount: { value: 10, unit: "g" }, item: "kinako (roasted soybean flour)" , substitute: "matcha powder"},
     ],
     instructions: [
         "Mix tapioca starch, water and sugar in a pot over medium heat",
