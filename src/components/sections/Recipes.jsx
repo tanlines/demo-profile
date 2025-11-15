@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Typography, Modal, Card, CardMedia, CardContent, List, ListItem, ListItemText, IconButton, useTheme, Select, MenuItem, FormControl, InputLabel, Menu } from '@mui/material';
-import { Close as CloseIcon, SwapHoriz as SubstituteIcon, MoreVert as MenuIcon } from '@mui/icons-material';
+import { Box, Typography, Modal, Card, CardMedia, CardContent, List, ListItem, ListItemText, IconButton, useTheme, Select, MenuItem, FormControl, InputLabel, Menu, Button } from '@mui/material';
+import { Close as CloseIcon, SwapHoriz as SubstituteIcon, MoreVert as MenuIcon, ContentCopy as CopyIcon } from '@mui/icons-material';
 import { recipes } from '../../data/recipes';
 
 // Import Swiper React components
@@ -133,6 +133,34 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
       next.add(index);
     }
     setCheckedIngredients(next);
+  };
+
+  const handleCopyToClipboard = async () => {
+    if (!selectedRecipe) return;
+
+    // Filter out checked (crossed out) ingredients
+    const uncheckedIngredients = selectedRecipe.ingredients
+      .map((ingredient, index) => {
+        if (checkedIngredients.has(index)) return null;
+        
+        // Format ingredient text
+        if (typeof ingredient === 'string') {
+          return ingredient;
+        }
+        
+        const amount = getScaledAmount(ingredient);
+        return `${amount} ${ingredient.item}`;
+      })
+      .filter(item => item !== null);
+
+    // Join with newlines
+    const textToCopy = uncheckedIngredients.join('\n');
+
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
   };
 
   return (
@@ -313,6 +341,24 @@ function RecipeModal({ open, onClose, selectedRecipe }) {
                 </Box>
               ))}
             </List>
+
+            <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant="outlined"
+                startIcon={<CopyIcon />}
+                onClick={handleCopyToClipboard}
+                sx={{
+                  color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                  borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
+                  '&:hover': {
+                    borderColor: theme.palette.primary.main,
+                    bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
+                  }
+                }}
+              >
+                Copy to clipboard
+              </Button>
+            </Box>
 
             <Typography
               variant="h6"

@@ -36,6 +36,35 @@ export const recipes = [
     image: "/recipes/japchae.webp"
   },
   {
+    title: "Pad Thai",
+    ingredients: [
+        { amount: { value: 100, unit: "g" }, item: "pad thai rice noodles" },
+        { amount: { value: 1, unit: "tbsp" }, item: "tamarind paste", substitute: "lime juice" },
+        { amount: { value: 50, unit: "g" }, item: "prawns", substitute: "chicken, tofu, or omit for vegetarian" },
+        { amount: { value: 1, unit: "" }, item: "egg" },
+        { amount: { value: 25, unit: "g" }, item: "bean sprouts" },
+        { amount: { value: 5, unit: "g" }, item: "roasted peanuts, crushed" },
+        { amount: { value: 1, unit: "clove" }, item: "garlic" },
+        { amount: { value: 1, unit: "stalk" }, item: "scallions", substitute: "chives or green onions" },
+        { amount: { value: 1, unit: "tbsp" }, item: "fish sauce" },
+        { amount: { value: 0.5, unit: "tbsp" }, item: "brown sugar" },
+        { amount: { value: 0.5, unit: "tbsp" }, item: "soy sauce" },
+        { amount: { value: 2, unit: "tbsp" }, item: "cooking oil" },
+        { amount: { value: 1, unit: "wedge" }, item: "lime" }
+    ],
+    instructions: [
+        "Soak rice noodles in warm water until soft, then drain",
+        "Mix tamarind paste, fish sauce, sugar, and soy sauce into noodles",
+        "Heat oil in a wok and sauté garlic until fragrant",
+        "Add shrimp and stir-fry until cooked, then push to one side",
+        "Crack egg into the wok and scramble, then mix with shrimp",
+        "Add noodles and sauce, stir-fry until noodles are well coated",
+        "Add bean sprouts and scallions, stir-fry briefly",
+        "Serve immediately with crushed peanuts and lime wedge on the side"
+    ],
+    image: "/recipes/padthai.webp"
+  },
+  {
     title: "Fungus Chicken",
     ingredients: [
         { amount: { value: 200, unit: "g" }, item: "chicken", substitute: "pork or beef pieces" },
